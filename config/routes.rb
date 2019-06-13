@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  root 'test#test'
+  root 'companies#index'
+  resources :companies
 end
