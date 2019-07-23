@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  root 'companies#index'
-  resources :companies
+  root 'internships#index'
+  get 'internships/show'
 end

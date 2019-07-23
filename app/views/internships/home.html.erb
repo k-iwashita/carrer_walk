@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Gudenal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            max-width: device-width;
+        }
+
+        @-ms-viewport {
+            width: device-width;
+        }
+
+        @media screen and (max-width: 499px) {
+            header {
+                border-bottom: 5px solid lightgray;
+                min-width: 100%;
+            }
+
+            #logo {
+                color: white;
+                background-image: radial-gradient(lightskyblue 5%, skyblue 15%, deepskyblue 60%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 70px;
+                height: 70px;
+                margin: 10px 10px;
+                border-radius: 30%;
+                font-weight: bold;
+                font-size: 5ex;
+            }
+
+            .size {
+                max-width: 100%;
+                word-wrap: break-word;
+                border-bottom: 1px solid lightgray;
+            }
+            .title {
+                color: black;
+                font-size: 3ex;
+            }
+
+            .img {
+                width: 480px;
+                height: 360px;
+            }
+
+            .location {
+                color: gray;
+                font-size: large;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            .date {
+                font-weight: bold;
+                font-size: 1ex;
+            }
+
+            .time {
+                color: black;
+            }
+
+            .name {
+                color: gray;
+            }
+        }
+
+        @media screen and (min-width: 500px) and (max-width: 749px) {
+            header {
+                border-bottom: 5px solid lightgray;
+                min-width: 100%;
+            }
+
+            #logo {
+                color: white;
+                background-image: radial-gradient(lightskyblue 5%, skyblue 15%, deepskyblue 60%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 70px;
+                height: 70px;
+                margin: 10px 10px;
+                border-radius: 30%;
+                font-weight: bold;
+                font-size: 5ex;
+            }
+
+
+            .size {
+                min-width: 100%;
+                word-wrap: break-word;
+                border-bottom: 1px solid lightgray;
+            }
+            .title {
+                color: black;
+                font-size: 3ex;
+            }
+
+            .img {
+                width: 480px;
+                height: 360px;
+            }
+
+            .location {
+                color: gray;
+                font-size: large;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            .time {
+                color: black;
+            }
+
+            .name {
+                color: gray;
+            }
+        }
+
+        @media screen and (min-width: 750px) and (max-width: 999px) {
+            header {
+                border-bottom: 5px solid lightgray;
+                min-width: 100%;
+            }
+
+            #logo {
+                color: white;
+                background-image: radial-gradient(lightskyblue 5%, skyblue 15%, deepskyblue 60%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 90px;
+                height: 90px;
+                margin: 10px 10px;
+                border-radius: 30%;
+                font-weight: bold;
+                font-size: 5ex;
+            }
+
+            .size {
+                min-width: 100%;
+                word-wrap: break-word;
+                border-bottom: 1px solid lightgray;
+            }
+            .title {
+                color: black;
+                font-size: 4ex;
+            }
+
+            .img {
+                width: 480px;
+                height: 360px;
+                text-align: right;
+            }
+
+            .date {
+                font-weight: bold;
+                font-size: 3ex;
+            }
+
+            .location {
+                color: gray;
+                overflow: hidden;
+                font-size: large;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            .time {
+                color: black;
+            }
+
+            .name {
+                color: gray;
+            }
+        }
+
+        @media screen and (min-width: 1000px) {
+            header {
+                border-bottom: 5px solid lightgray;
+                min-width: 100%;
+            }
+
+            #logo {
+                color: white;
+                background-image: radial-gradient(lightskyblue 5%, skyblue 15%, deepskyblue 60%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 70px;
+                height: 70px;
+                margin: 10px 10px;
+                border-radius: 30%;
+                font-weight: bold;
+                font-size: 5ex;
+            }
+
+            .size {
+                min-width: 50%;
+                word-wrap: break-word;
+                border-bottom: 1px solid lightgray;
+                border-right: 1px solid lightgray;
+            }
+
+            .title {
+                color: black;
+                font-size: 4ex;
+            }
+
+
+            .img {
+                width: 175px;
+                height: 140px;
+            }
+
+            .date {
+                font-weight: bold;
+                font-size: x-large;
+            }
+
+            .location {
+                color: gray;
+                font-size: medium;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+            .time {
+                color: black;
+            }
+
+            .name {
+                color: gray;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<header>
+			<span id="logo" onclick="url('/')">
+				G
+			</span>
+</header>
+<div id="body" style="word-wrap: break-word;"></div>
+<script>
+    //Data size
+    var size = 10, html;
+
+    if (navigator.userAgent.indexOf('iPhone') > 0 || navigator.userAgent.indexOf('Android') > 0 && navigator.userAgent.indexOf('Mobile') > 0) {
+        html = '<div class="d-flex justify-content-center">';
+        html += '<div class="flex-column">';
+        for (i = 0; i < size; i++) {
+            //Date Image Time location Title CompanyName
+            month = new Date().getMonth() + 1;
+            date = new Date().getDate();
+            hour = new Date().getHours();
+            minutes = new Date().getMinutes()
+            if (minutes < 10) {
+                minutes = '0' + new Date().getMinutes();
+            }
+            week = new Date().getDay();
+            weekStr = ["日", "月", "火", "水", "木", "金", "土"][week];
+            l = 'グランフロント大阪 ナレッジキャピタルタワーC 7階 GVH Osaka';
+            title = '勉強会のタイトル';
+            n = '株式会社Gude';
+
+            html += '<div class="size" onmouseover="over(this)" onmouseout="out(this)" onclick="url(\'details\')">' +
+                '<div class="flex-column">' +
+                '<div class="d-flex  p-2 bd-highlight justify-content-center">' +
+                '<img src="./sample.jpg" class="img"></img>' +
+                '</div>' +
+                '<div class="p-2 bd-highlight">' +
+                '<div class="d-flex flex-row bd-highlight mb-3">' +
+                '<div class="p-2 bd-highlight">' +
+                '<a style="font-size:large">' + month + '月</a>' +
+                '<br><a class="date">' + date + '</a>' +
+                '</div>' +
+                '<div class="p-2 bd-highlight">' +
+                '<div class="d-flex flex-column">' +
+                '<div class="time" style="font-size:large;">' + weekStr + '曜日' + hour + ':' + minutes + '</div>' +
+                '<div class="location">' + l + '</div>' +
+                '<div class="title">' + title + '</div>' +
+                '<div class="name">' + n + '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>';
+        }
+        html += '</div></div>';
+    } else {
+        //html = '<div class="d-flex justify-content-center">';
+        html = '<div class="flex-column">';
+        for (i = 0; i < size / 2; i++) {
+            //Date Image Time location Title CompanyName
+            month = new Date().getMonth() + 1;
+            date = new Date().getDate();
+            hour = new Date().getHours();
+            minutes = new Date().getMinutes()
+            if (minutes < 10) {
+                minutes = '0' + new Date().getMinutes();
+            }
+            week = new Date().getDay();
+            weekStr = ["日", "月", "火", "水", "木", "金", "土"][week];
+            l = 'グランフロント大阪 ナレッジキャピタルタワーC 7階 GVH Osaka';
+            title = '勉強会のタイトル';
+            n = '株式会社Gude';
+//bd-highlight mb-3
+            html += '<div class="d-flex flex-row">';
+            for (j = 1; j < 3; j++) {
+                html += '<div class="p-2 bd-highlight size" onmouseover="over(this)" onmouseout="out(this)" onclick="url(\'details\')">' +
+                    '<div class="d-flex  p-2 bd-highlight justify-content-center">' +
+                    '<img src="./sample.jpg" class="img"></img>' +
+                    '</div>' +
+                    '<div class="p-2 bd-highlight">' +
+                    '<div class="d-flex flex-row">' +
+                    '<div class="p-2 bd-highlight">' +
+                    '<p style="font-size:large">' + month + '月</p>' +
+                    '<p class="date">' + date + '</p>' +
+                    '</div>' +
+                    '<div class="p-2 bd-highlight">' +
+                    '<div class="d-flex flex-column">' +
+                    '<div class="p-2 bd-highlight">' +
+                    '<div class="time" style="font-size:large;">' + weekStr + '曜日' + hour + ':' + minutes + '</div>' +
+                    '<div class="location">' + l + '</div>' +
+                    '<div class="title">' + title + '</div>' +
+                    '<div class="name">' + n + '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+            }
+            html += '</div>';
+        }
+        html += '</div>';
+    }
+    document.getElementById("body").innerHTML = html;
+
+    function over(obj) {
+        $(obj).find('.title').css('color', 'lightskyblue');
+    }
+
+    function out(obj) {
+        $(obj).find('.title').css('color', 'black');
+    }
+
+    function url(u) {
+        location.href = u;
+    }
+</script>
+</body>
+</html>
+
