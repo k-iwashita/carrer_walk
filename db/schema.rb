@@ -10,18 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190706100625) do
+ActiveRecord::Schema.define(version: 2019_07_23_093043) do
 
-  create_table "internships", force: :cascade do |t|
-    t.string   "title"
-    t.string   "company"
-    t.string   "companyLogo"
-    t.string   "location"
-    t.date     "date"
-    t.string   "url"
-    t.string   "image"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.string "image"
+    t.string "location"
+    t.string "date"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "internships", id: :serial, force: :cascade do |t|
+    t.string "title"
+    t.string "company"
+    t.string "companyLogo"
+    t.string "location"
+    t.date "date"
+    t.string "url"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
