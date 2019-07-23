@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Gudenal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .vuc {
+        }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+<body style="background-color: #f1f1f1">
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="/" style="color: deepskyblue">Gudenal</a>
+</nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="navbar-nav btn-group" role="group">
+            <button type="button" id="intern" class="btn btn-info active" style="color: white" onclick="clk(1)">
+                インターンシップ
+            </button>
+            <button type="button" id="std" class="btn btn-info" style="color: white" onclick="clk(0)">
+                勉強会
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div class="card-body d-flex justify-content-center">
+    <!--ここをループ-->
+    <div class="card" style="width: 30rem;" onmouseover="over(this)" onmouseout="out(this)">
+        <img class="card-img-top" src="./sample.jpg">
+        <div class="card-body">
+            <p class="card-text" style="text-align: left">場所</p>
+            <h3 class="card-title vuc" style="text-align: center">タイトル</h3>
+            <p class="float-left" style="">会社名</p>
+            <p class="float-right">日付</p>
+        </div>
+    </div>
+</div>
+<script>
+    function over(obj) {
+        $(obj).find('.vuc').css('color', 'lightskyblue');
+    }
+
+    function out(obj) {
+        $(obj).find('.vuc').css('color', 'black');
+    }
+
+    function clk(i) {
+        if (i == 0) {
+            $('#std').addClass('active');
+            $('#intern').removeClass('active');
+        } else if (i == 1) {
+            $('#std').removeClass('active');
+            $('#intern').addClass('active');
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+upstream puma {
+  server gudenal_web_1:3000;
+}
+
+server {
+  server_name localhost;
+
+  location / {
+    proxy_read_timeout 300;
+    proxy_connect_timeout 300;
+    proxy_redirect off;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_pass http://puma;
+  }
+}
