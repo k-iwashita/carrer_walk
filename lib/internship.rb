@@ -1,6 +1,6 @@
 require 'mechanize'
 
-class Scraping 
+class GetInternship 
   
   
 =begin  
@@ -216,5 +216,7 @@ end
 # カテゴリと紐づけてインターン詳細を同時に保存
 
 
-  
+GetInternship.infra
+GetInternship.zero_one_intern
+GetInternship.careerbaito
   
