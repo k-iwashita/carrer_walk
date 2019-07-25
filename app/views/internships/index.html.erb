@@ -14,9 +14,9 @@
     </div>
 </nav>
 
-<div class="justify-content-center">
+<div class="mx-auto" style="width:50%">
     <% @internships.each do |intern| %>
-    <div class="card" style="width: 30rem;" onmouseover="over(this)" onmouseout="out(this)">
+    <div class="card" style="width: 100%;" onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='<%= intern.url %>'">
        <%= image_tag (intern.image), class: "card-img-top"  %> 
      <div class="card-body">
             <p class="card-text" style="text-align: left"><%= intern.location %></p>
