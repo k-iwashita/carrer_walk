@@ -1,0 +1,17 @@
+<%= render "layouts/header" %>
+
+<div class="mx-auto" style="width:50%">
+    <% @events.each do |event| %>
+    <div class="card" style="width: 100%;" onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='<%= event.url %>'">
+        <%- if event.image %>
+            <%= image_tag (event.image), class: "card-img-top"  %> 
+        <% end %>
+        <div class="card-body">
+            <p class="card-text" style="text-align: left"><%= event.location %></p>
+            <h3 class="card-title vuc" style="text-align: center"><%= event.title %></h3>
+            <p class="float-right"><%= event.date  %></p>
+        </div>
+    </div>
+    <% end %>
+    <%= paginate @events %>
+</div>
