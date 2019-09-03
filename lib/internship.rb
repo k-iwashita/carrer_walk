@@ -1,9 +1,9 @@
 require 'mechanize'
 
-class Scraping 
+class GetInternship  
   
   
-=begin  
+ 
   def self.wantedly
     agent = Mechanize.new
     wantedly_links = []
@@ -44,7 +44,7 @@ class Scraping
     internship.image = image
     internship.save
   end 
-=end
+
   
   
   def self.infra
@@ -215,6 +215,7 @@ end
 # カテゴリが存在しなければ新しく作成
 # カテゴリと紐づけてインターン詳細を同時に保存
 
-
-  
+GetInternship.careerbaito
+GetInternship.infra
+GetInternship.zero_one_intern
   

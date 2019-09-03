@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_23_093043) do
+ActiveRecord::Schema.define(version: 2019_09_03_070755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,4 +37,59 @@ ActiveRecord::Schema.define(version: 2019_07_23_093043) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "jobs", force: :cascade do |t|
+    t.string "name"
+    t.datetime "publish_start_at"
+    t.datetime "publish_end_at"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.string "name"
+    t.string "detail", limit: 10000
+    t.datetime "publish_start_at"
+    t.datetime "publish_end_at"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_jobs", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "job_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_user_jobs_on_job_id"
+    t.index ["user_id"], name: "index_user_jobs_on_user_id"
+  end
+
+  create_table "user_lessons", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_user_lessons_on_lesson_id"
+    t.index ["user_id"], name: "index_user_lessons_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "name", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  add_foreign_key "user_jobs", "jobs"
+  add_foreign_key "user_jobs", "users"
+  add_foreign_key "user_lessons", "lessons"
+  add_foreign_key "user_lessons", "users"
 end
