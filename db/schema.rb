@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_03_070755) do
+ActiveRecord::Schema.define(version: 2019_09_07_051425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.string "slug", limit: 45
+    t.boolean "publish_flg"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "events", force: :cascade do |t|
     t.string "title"
@@ -37,6 +45,15 @@ ActiveRecord::Schema.define(version: 2019_09_03_070755) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "job_categories", force: :cascade do |t|
+    t.bigint "job_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_job_categories_on_category_id"
+    t.index ["job_id"], name: "index_job_categories_on_job_id"
+  end
+
   create_table "jobs", force: :cascade do |t|
     t.string "name"
     t.datetime "publish_start_at"
@@ -44,6 +61,15 @@ ActiveRecord::Schema.define(version: 2019_09_03_070755) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "lesson_categories", force: :cascade do |t|
+    t.bigint "lesson_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_lesson_categories_on_category_id"
+    t.index ["lesson_id"], name: "index_lesson_categories_on_lesson_id"
   end
 
   create_table "lessons", force: :cascade do |t|
@@ -88,6 +114,10 @@ ActiveRecord::Schema.define(version: 2019_09_03_070755) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "job_categories", "categories"
+  add_foreign_key "job_categories", "jobs"
+  add_foreign_key "lesson_categories", "categories"
+  add_foreign_key "lesson_categories", "lessons"
   add_foreign_key "user_jobs", "jobs"
   add_foreign_key "user_jobs", "users"
   add_foreign_key "user_lessons", "lessons"

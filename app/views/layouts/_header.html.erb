@@ -6,6 +6,17 @@
         <div class="navbar-nav btn-group" role="group">
             <%= link_to "インターンシップ", root_path, class: "btn btn-info active", id: "intern", style: "color: white", onclick: "clk(1)" %>
             <%= link_to "勉強会", events_index_path, class: "btn btn-info", id: "std", style: "color: white", onclick: "clk(0)" %>
-        </div>
+				</div>
+				<%= form_for @job do |form|%>
+					<%= form.text_field :name%>
+					<%= form.text_field :publish_start_at%>
+					<%= form.submit %>
+				<% end %>
+				<%= form_for @lesson do |form|%>
+					<%= form.text_field :name%>
+					<%= form.text_field :publish_start_at%>
+					<%= form.submit %>
+				<% end %>
+				<%= link_to "user", user_index_path, class: "btn btn-info", id: "std", style: "color: white", onclick: "clk(0)" %>
     </div>
 </nav>

@@ -1,0 +1,7 @@
+<%= render "layouts/header" %>
+
+<div class="mx-auto" style="width:50%">
+	<% @jobs.each do |job| %>
+	  <%= job.name %>
+        <% end  %>		
+</div>

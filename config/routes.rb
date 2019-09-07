@@ -4,4 +4,7 @@ Rails.application.routes.draw do
   get 'internships/show'
   get 'events/index'
   get 'events/show'
+
+  resources :jobs
+  resources :lessons
 end

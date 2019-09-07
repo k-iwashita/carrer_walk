@@ -1,0 +1,7 @@
+<%= render "layouts/header" %>
+
+<div class="mx-auto" style="width:50%">
+	<% @lessons.each do |lesson| %>
+          <%= lesson.name %>
+        <% end  %>		
+</div>

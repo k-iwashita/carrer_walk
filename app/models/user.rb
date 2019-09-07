@@ -4,9 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :user_jobs, dependent: :destroy 
   has_many :jobs, through: :user_jobs
-  has_many :user_jobs
 
+  has_many :user_lessons, dependent: :destroy 
   has_many :lessons, through: :user_lessons
-  has_many :user_lessons
 end
