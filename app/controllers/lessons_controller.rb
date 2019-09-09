@@ -9,12 +9,12 @@ class LessonsController < ApplicationController
    end
 
    def create
-     @lesson = current_user.lessons.build(lesson_params)
+     @lesson = Lesson.new(lesson_params)
      if @lesson.save
        redirect_to lessons_path
      else
        render :new
-     end
+     end 
    end
 
    private

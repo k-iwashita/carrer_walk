@@ -1,22 +1,16 @@
-<nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="/" style="color: deepskyblue">Gudenal</a>
-</nav>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
     <div class="collapse navbar-collapse" id="navbarNav">
-        <div class="navbar-nav btn-group" role="group">
-            <%= link_to "インターンシップ", root_path, class: "btn btn-info active", id: "intern", style: "color: white", onclick: "clk(1)" %>
-            <%= link_to "勉強会", events_index_path, class: "btn btn-info", id: "std", style: "color: white", onclick: "clk(0)" %>
-				</div>
-				<%= form_for @job do |form|%>
-					<%= form.text_field :name%>
-					<%= form.text_field :publish_start_at%>
-					<%= form.submit %>
-				<% end %>
-				<%= form_for @lesson do |form|%>
-					<%= form.text_field :name%>
-					<%= form.text_field :publish_start_at%>
-					<%= form.submit %>
-				<% end %>
-				<%= link_to "user", user_index_path, class: "btn btn-info", id: "std", style: "color: white", onclick: "clk(0)" %>
-    </div>
+      <a class="navbar-brand" href="/" style="color: deepskyblue">Carrer<strong style="colro:#6688FF">Walk</strong></a>
+	  	<div class="navbar-nav btn-group mr-auto" role="group">
+		  	<%= link_to "インターンシップ", root_path, class: "btn btn-info active", id: "intern", style: "color: white", onclick: "clk(1)" %>
+		  	<%= link_to "勉強会", events_index_path, class: "btn btn-info", id: "std", style: "color: white", onclick: "clk(0)" %>
+      </div>
+      <% if !user_signed_in?  %>
+        <div class="navbar-nav">
+          <%= link_to "新規登録", new_user_registration_path, class: "btn" %>
+          <%= link_to "ログイン", new_user_session_path, class: "btn" %>
+        </div>
+      <% end %>
+   </div>
 </nav>
