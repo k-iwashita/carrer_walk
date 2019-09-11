@@ -115,7 +115,7 @@ class Scraping
     
     name = page.at('.l-job-title h2').inner_text if page.at('.l-job-title')
     company = page.at('.m-job-titleName').inner_text if page.at('.m-job-imgBox img')
-    image = page.at(".l-job-imgBox img")[:src]
+    image = page.at(".l-job-imgBox img")[:src] if page.at(".l-job-imgBox img")
     location = page.at(".l-job-requirements dl:nth-child(7) dd")
 
     internship = Internship.where(title: name).first_or_initialize
@@ -215,6 +215,8 @@ end
 # カテゴリが存在しなければ新しく作成
 # カテゴリと紐づけてインターン詳細を同時に保存
 
-
+Scraping.careerbaito
+Scraping.infra
+Scraping.zero_one_intern
   
   
