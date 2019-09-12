@@ -1,21 +1,3 @@
-<<<<<<< Updated upstream
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container">
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <a class="navbar-brand" href="/" style="color: deepskyblue">Career<strong style="colro:#6688FF">Walk</strong></a>
-	  	<div class="navbar-nav btn-group mr-auto" role="group">
-		  	<%= link_to "インターンシップ", root_path, class: "btn btn-info active", id: "intern", style: "color: white", onclick: "clk(1)" %>
-		  	<%= link_to "勉強会", events_index_path, class: "btn btn-info", id: "std", style: "color: white", onclick: "clk(0)" %>
-      </div>
-      <% if !user_signed_in?  %>
-        <div class="navbar-nav">
-          <%= link_to "新規登録", new_user_registration_path, class: "btn" %>
-          <%= link_to "ログイン", new_user_session_path, class: "btn" %>
-        </div>
-      <% end %>
-   </div>
-</nav>
-=======
 <header class="sticky-top header--basic">
   <!--div class="img-thumbnail"  style="height:8vh; width: 8vh; border-radius: 50%; margin: 1vh;" onclick="location.href='/'"--><!--/div-->
   <%= link_to "Login", events_index_path, class:"login-btn--basic btn btn-lg btn-outline-info"%>
@@ -39,4 +21,3 @@
 <!--%= link_to "user", user_index_path, class: "btn btn-info", id: "std", style: "color: white", onclick: "clk(0)" %-->
 
 <!--/nav-->
->>>>>>> Stashed changes
