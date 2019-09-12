@@ -1,16 +1,21 @@
 
-<div class="mx-auto" style="width:50%">
-    <% @internships.each do |intern| %>
-    <div class="card" style="width: 100%;" onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='<%= intern.url %>'">
-        <%= image_tag (intern.image), class: "card-img-top"  %> 
-        <div class="card-body">
-            <p class="card-text" style="text-align: left"><%= intern.location %></p>
-            <h3 class="card-title vuc" style="text-align: center"><%= intern.title %></h3>
-            <p class="float-left" style=""><%= intern.company %></p>
-            <p class="float-right"><%= intern.date  %></p>
-        </div>
+<!--div id="body" class="mx-auto" style="width:50%"-->
+<div id="body">
+  <% @internships.each do |intern| %>
+    <div class="card mb-3" onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='<%= intern.url %>'">
+      <%= image_tag (intern.image), class: "card-img-top"  %> 
+      <div class="card-body">
+        <p class="card-text" style="text-align: left"><%= intern.location %></p>
+        <h3 class="card-title vuc" style="text-align: center"><%= intern.title %></h3>
+        <p class="float-left" style=""><%= intern.company %></p>
+        <p class="float-right"><%= intern.date  %></p>
+      </div>
     </div>
-    <% end %>
-    <%= paginate @internships %>
+  <% end %>
+  <%= paginate @internships %>
 </div>
+<<<<<<< Updated upstream
 
+=======
+<%= render "layouts/footer" %>
+>>>>>>> Stashed changes
