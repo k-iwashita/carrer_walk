@@ -1,4 +1,12 @@
-<div id="body">
+<div class="mx-auto">
+  <%= image_tag 'resource.png', class:"img-fluid" %>
+  <% if !user_signed_in?  %>
+    <div class="d-flex justify-content-center">
+      <%= link_to "新規登録", new_user_registration_path, class: "btn--basic shadow-lg" %>
+      <%= link_to "ログイン", new_user_session_path, class: "btn--basic shadow-lg" %>
+    </div>
+  <% end %>
+  <h1 style="text-align: center; margin: 10vh 0;">インターンシップ一覧</h1>
   <% @internships.each do |intern| %>
     <div class="card mb-3" onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='<%= intern.url %>'">
       <%= image_tag (intern.image), class: "card-img-top"  %> 
