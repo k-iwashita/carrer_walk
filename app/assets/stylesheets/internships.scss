@@ -9,6 +9,13 @@
   margin: 0;
   padding: 0;
 }
+html {
+	overflow: auto;
+}
+body {
+  overflow: hidden;
+  min-width: 100%;
+}
 
 .btn--basic {
   width: 20%;
@@ -21,3 +28,8 @@
   color: black;
 }
 
+.card--basic {
+  max-width: 40%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}

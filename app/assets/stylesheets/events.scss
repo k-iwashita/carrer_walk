@@ -1,9 +1,20 @@
 // Place all the styles related to the events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap"; 
+
 * {
   margin: 0;
   padding: 0;
+}
+
+html {
+	overflow: auto;
+}
+
+body {
+  overflow: hidden;
+  min-width: 100%;
 }
 
 .btn--basic {
@@ -16,3 +27,10 @@
   font-size: large;
   color: black;
 }
+
+.card--basic {
+  max-width: 40%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+

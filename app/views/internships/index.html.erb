@@ -1,22 +1,46 @@
-<div class="mx-auto">
+<% if !user_signed_in?  %>
   <%= image_tag 'resource.png', class:"img-fluid" %>
-  <% if !user_signed_in?  %>
-    <div class="d-flex justify-content-center">
-      <%= link_to "新規登録", new_user_registration_path, class: "btn--basic shadow-lg" %>
-      <%= link_to "ログイン", new_user_session_path, class: "btn--basic shadow-lg" %>
-    </div>
-  <% end %>
-  <h1 style="text-align: center; margin: 10vh 0;">インターンシップ一覧</h1>
-  <% @internships.each do |intern| %>
-    <div class="card mb-3" onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='<%= intern.url %>'">
-      <%= image_tag (intern.image), class: "card-img-top"  %> 
-      <div class="card-body">
-        <p class="card-text" style="text-align: left"><%= intern.location %></p>
-        <h3 class="card-title vuc" style="text-align: center"><%= intern.title %></h3>
-        <p class="float-left" style=""><%= intern.company %></p>
-        <p class="float-right"><%= intern.date  %></p>
+  <div class="d-flex justify-content-center">
+    <%= link_to "新規登録", new_user_registration_path, class: "btn--basic shadow-lg", style:"font-weight:bold" %>
+    <%= link_to "ログイン", new_user_session_path, class: "btn--basic shadow-lg", style:"font-weight:bold" %>
+  </div>
+<% end %>
+<h1 style="text-align: center; margin: 10vh 0;">インターンシップ一覧</h1>
+<% @internships.each_slice(2) do |intern_l, intern_r| %>
+  <div class="card-deck d-flex justify-content-center">
+    <div class="row no-gutters card--basic shadow-lg" style="margin-right: 3%;" onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='<%= intern_l.url %>'">
+      <div class="col-md-4 d-flex flex-wrap align-content-center">
+        <%- if intern_l.image %>
+          <%= image_tag (intern_l.image), class: "img-thumbnail" , style: "width: 300px;height:auto" %> 
+        <% else %>
+          <%= image_tag 'noImg', class: "img-thumbnail", style: "width: 300px;height: auto"  %>
+        <% end %>
+      </div>
+      <div class="col-md-8 d-flex flex-wrap align-content-center">
+        <div class="card-body">
+          <p class="card-text" style="text-align: left"><%= intern_l.location %></p>
+          <h3 class="card-title vuc" style="text-align: center"><%= intern_l.title %></h3>
+          <p class="float-right"><%= intern_l.date  %></p>
+        </div>
       </div>
     </div>
-  <% end %>
-  <%= paginate @internships %>
-</div>
+
+    <div class="row no-gutters card--basic shadow-lg" style="margin-left:3%;"onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='<%= intern_r.url %>'">
+      <div class="col-md-4 d-flex flex-wrap align-content-center">
+        <%- if intern_r.image %>
+          <%= image_tag (intern_r.image), class: "img-thumbnail", style: "width: 300px; height: auto"  %> 
+        <% else %>
+          <%= image_tag 'noImg', class: "img-thumbnail", style: "width: 300px; height: auto"  %>
+        <% end %>
+      </div>
+      <div class="col-md-8 d-flex flex-wrap align-content-center">
+        <div class="card-body">
+          <p class="card-text" style="text-align: left"><%= intern_r.location %></p>
+          <h3 class="card-title vuc" style="text-align: center"><%= intern_r.title %></h3>
+          <p class="float-right"><%= intern_r.date  %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<%= paginate @internships %>
