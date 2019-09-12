@@ -1,5 +1,3 @@
-<!--%= render "layouts/header" %-->
-<!--div id="body" class="mx-auto" style="width:50%"-->
 <div id="body">
   <% @internships.each do |intern| %>
     <div class="card mb-3" onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='<%= intern.url %>'">
@@ -14,4 +12,3 @@
   <% end %>
   <%= paginate @internships %>
 </div>
-<%= render "layouts/footer" %>

@@ -1,4 +1,3 @@
-
 <div id="body" class="mx-auto">
   <% @events.each do |event| %>
     <div class="card" style="width: 100%;" onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='<%= event.url %>'">
@@ -14,5 +13,3 @@
   <% end %>
   <%= paginate @events %>
 </div>
-
-<%= render "layouts/footer" %>
