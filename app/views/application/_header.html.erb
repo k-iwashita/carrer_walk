@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg">
   <div class="container">
     <div class="justofy-content-start">
-      <h1 href="/" style="font-style: oblique;">Career<strong style="color:#6688FF"> Walk</strong></h1>
+      <h1 onclick="location.href='/'" style="font-style: oblique;">Career<strong style="color:#6688FF"> Walk</strong></h1>
       <div class="navbar-nav btn-group mr-auto" role="group">
         <% if request.path_info.include?("events") %>
           <%= link_to "インターンシップ", root_path, class: "btn btn-info", id: "intern", style: "color: white" %>
@@ -15,8 +15,8 @@
     <div class="justify-content-end">
       <% if !user_signed_in?  %>
         <div class="navbar-nav">
-          <%= link_to "新規登録", new_user_registration_path, class: "btn" %>
-          <%= link_to "ログイン", new_user_session_path, class: "btn" %>
+          <%= link_to "新規登録", new_user_registration_path, class: "btn", style: "font-weight: bold"%>
+          <%= link_to "ログイン", new_user_session_path, class: "btn", style: "font-weight: bold" %>
         </div>
       <% end %>
     </div>

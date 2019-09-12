@@ -5,7 +5,7 @@
     <%= link_to "ログイン", new_user_session_path, class: "btn--basic shadow-lg", style:"font-weight:bold" %>
   </div>
 <% end %>
-<h1 style="text-align: center; margin: 10vh 0;">勉強会一覧</h1>
+<h1 style="text-align: center; margin-bottom: 7vh;">勉強会一覧</h1>
 <% @events.each_slice(2) do |event_l, event_r| %>
   <div class="card-deck d-flex justify-content-center">
     <div class="row no-gutters card--basic shadow-lg" style="margin-right: 3%;" onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='<%= event_l.url %>'">
@@ -19,7 +19,7 @@
       <div class="col-md-8 d-flex flex-wrap align-content-center">
         <div class="card-body">
           <p class="card-text" style="text-align: left"><%= event_l.location %></p>
-          <h3 class="card-title vuc" style="text-align: center"><%= event_l.title %></h3>
+          <h5 class="card-title vuc" style="text-align: center"><%= event_l.title %></h5>
           <p class="float-right"><%= event_l.date  %></p>
         </div>
       </div>
@@ -36,7 +36,7 @@
       <div class="col-md-8 d-flex flex-wrap align-content-center">
         <div class="card-body">
           <p class="card-text" style="text-align: left"><%= event_r.location %></p>
-          <h3 class="card-title vuc" style="text-align: center"><%= event_r.title %></h3>
+          <h5 class="card-title vuc" style="text-align: center"><%= event_r.title %></h5>
           <p class="float-right"><%= event_r.date  %></p>
         </div>
       </div>
