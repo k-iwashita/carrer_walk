@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_07_051425) do
+ActiveRecord::Schema.define(version: 2019_09_14_061731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 2019_09_07_051425) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "event_categories", force: :cascade do |t|
+    t.bigint "event_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_event_categories_on_category_id"
+    t.index ["event_id"], name: "index_event_categories_on_event_id"
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.string "image"
@@ -31,6 +40,13 @@ ActiveRecord::Schema.define(version: 2019_09_07_051425) do
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "publish_start_at"
+    t.datetime "publish_end_at"
+    t.boolean "publish_flg"
+    t.datetime "deleted_at"
+    t.bigint "upload_file_id"
+    t.string "detail", limit: 10000
+    t.index ["upload_file_id"], name: "index_events_on_upload_file_id"
   end
 
   create_table "internships", id: :serial, force: :cascade do |t|
@@ -82,6 +98,25 @@ ActiveRecord::Schema.define(version: 2019_09_07_051425) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "upload_files", force: :cascade do |t|
+    t.string "default_file_name", limit: 200
+    t.string "managed_file_name", limit: 200
+    t.string "fileable_type"
+    t.bigint "fileable_id"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_events", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_user_events_on_event_id"
+    t.index ["user_id"], name: "index_user_events_on_user_id"
+  end
+
   create_table "user_jobs", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "job_id"
@@ -114,10 +149,14 @@ ActiveRecord::Schema.define(version: 2019_09_07_051425) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "event_categories", "categories"
+  add_foreign_key "event_categories", "events"
   add_foreign_key "job_categories", "categories"
   add_foreign_key "job_categories", "jobs"
   add_foreign_key "lesson_categories", "categories"
   add_foreign_key "lesson_categories", "lessons"
+  add_foreign_key "user_events", "events"
+  add_foreign_key "user_events", "users"
   add_foreign_key "user_jobs", "jobs"
   add_foreign_key "user_jobs", "users"
   add_foreign_key "user_lessons", "lessons"

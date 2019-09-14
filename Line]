@@ -1,0 +1,37 @@
+e Gemfile
+x
+e scraping.rb
+e internship.rb
+add ! to overwirte
+qw
+wq!!
+e ../companies/index.html.erb
+e ../internships/index.html.erb
+e ../../../../../c-walk-20190903/
+e ../lessons/index.html.erb
+e ../jobs/
+e ../lessons/new.html.erb
+e app/controllers/
+e _hea
+e app/views/internships/index.html.erb
+1
+e app/assets/stylesheets/application.scss
+.w
+e app/views/application/_footer.html.erb
+wq!!!
+wq!   
+w sudo tee %
+wq!
+terminal
+w!
+e app/assets/stylesheets/
+e app/views/users/registrations/new.html.erb
+e app/views/users/sessions/new.html.erb
+w
+e lib/event.rb
+ew
+q
+wq
+w !sudo tee %
+q!
+
