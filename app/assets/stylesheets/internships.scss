@@ -6,7 +6,33 @@
 }
 
 * {
- margin: 0;
- padding: 0;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+	overflow: auto;
+}
+
+body {
+  overflow: hidden;
+  min-width: 100%;
+}
+
+.btn--basic {
+  width: 20%;
+  margin: 8vh 100px;
+  padding: 10px;
+  border: 2px solid blue;
+  border-radius: 50px;
+  text-align: center;
+  font-size: large;
+  color: black;
+}
+
+.card--basic {
+  max-width: 40%;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
