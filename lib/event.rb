@@ -53,7 +53,7 @@ class Events
     begin
       agent = Mechanize.new
       page = agent.get(link)
-      title = page.at('.title-heading h1').inner_text if page.at('.title-heading h1')
+      title = page.at('.eventDetail-header-inner h1').inner_text if page.at('.eventDetail-header-inner')
       image = page.at('.image img')[:src] if page.at('.image img')
       location = page.at('//*[@id="mainContentArea"]/div[1]/div[2]/div[2]/div[1]/dl[2]/dd').inner_text if page.at('//*[@id="mainContentArea"]/div[1]/div[2]/div[2]/div[1]/dl[2]/dd')
       date = page.at('.eventAside-day')[:datetime] if page.at('.eventAside-day')
@@ -137,4 +137,5 @@ end
 
 Events.connpass_urls
 Events.techplay_urls
+
 Events.doorkeeper_urls

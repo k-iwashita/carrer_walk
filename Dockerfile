@@ -1,6 +1,8 @@
 FROM ruby:2.5
 RUN apt-get update && apt-get install -y curl apt-transport-https wget 
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+RUN apt-get update -qq && apt-get install -y postgresql-client
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+      && apt-get install -y nodejs
 
 RUN mkdir /carrierWalk
 WORKDIR /carrierWalk
