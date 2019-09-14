@@ -9,7 +9,7 @@ services:
    context: .
   command: bash -c "bundle exec puma -C config/puma.rb"
   volumes:
-   - .:/myapp
+   - .:/carrierWalk
   ports:
    - "3000:3000"
   depends_on:
