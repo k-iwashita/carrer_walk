@@ -25,24 +25,7 @@
       </div>
     </div>
 
-<<<<<<< HEAD
-<div class="mx-auto" style="width:50%">
-  <% @events.each do |event| %>
-    <div class="card" style="width: 100%;" onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='<%= event.url %>'">
-      <%- if event.image %>
-        <%= image_tag (event.image), class: "card-img-top"  %> 
-      <% end %>
-      <div class="card-body">
-        <p class="card-text" style="text-align: left"><%= event.location %></p>
-        <h3 class="card-title vuc" style="text-align: center"><%= event.title %></h3>
-        <p class="float-right"><%= event.date  %></p>
-      </div>
-    </div>
-  <% end %>
-  <%= paginate @events %>
-</div>
-=======
-    <div class="row no-gutters card--basic shadow-lg" style="margin-left:3%;"onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='<%= event_r.url %>'">
+   <div class="row no-gutters card--basic shadow-lg" style="margin-left:3%;"onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='<%= event_r.url %>'">
       <div class="col-md-4 d-flex flex-wrap align-content-center">
         <%- if event_r.image %>
           <%= image_tag (event_r.image), class: "img-thumbnail", style: "width: 300px; height: auto"  %> 
@@ -61,4 +44,3 @@
   </div>
 <% end %>
 <%= paginate @events %>
->>>>>>> 8971a64c509b56d88ee3e54bf709a98572aca577

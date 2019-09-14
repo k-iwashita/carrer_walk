@@ -5,10 +5,10 @@
       <div class="navbar-nav btn-group mr-auto" role="group">
         <% if request.path_info.include?("events") %>
           <%= link_to "インターンシップ", root_path, class: "btn btn-info", id: "intern", style: "color: white" %>
-          <%= link_to "勉強会", events_index_path, class: "btn btn-info active", id: "std", style: "color: white" %>
+          <%= link_to "勉強会", events_path, class: "btn btn-info active", id: "std", style: "color: white" %>
         <% else %>
           <%= link_to "インターンシップ", root_path, class: "btn btn-info active", id: "intern", style: "color: white" %>
-          <%= link_to "勉強会", events_index_path, class: "btn btn-info", id: "std", style: "color: white" %>
+          <%= link_to "勉強会", events_path, class: "btn btn-info", id: "std", style: "color: white" %>
         <% end %>
       </div>
     </div>
