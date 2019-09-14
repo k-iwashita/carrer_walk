@@ -44,6 +44,8 @@ gem 'jquery-rails'
 
 gem "devise"
 
+gem "i18n"
+
 gem "devise-i18n"
 
 group :development, :test do

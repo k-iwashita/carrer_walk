@@ -272,6 +272,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   devise-i18n
+  i18n
   jbuilder (~> 2.5)
   jquery-rails
   kaminari

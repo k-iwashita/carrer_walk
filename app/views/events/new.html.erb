@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="event-form-wrapper">
+    <%= form_with model: @event do |form| %>
+      <div class="form-group">
+        <%= form.label :title %>
+        <%= form.text_field :title, placeholder: "タイトル", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :publish_start_at %>
+        <%= form.datetime_select :publish_start_at, {}, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :publish_end_at %>
+        <%= form.datetime_select :publish_end_at, {}, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= form.label :detail %>
+        <%= form.text_area :detail, placeholder: "詳細", class: "form-control" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
