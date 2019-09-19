@@ -1,2 +1,28 @@
-<h1>Event#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<div class="event-wrapper">
+  <div class="container">
+    <div class="event-main">
+      <h1><%= @event.title  %></h1>
+      <p><%= @event.detail  %></p>
+    </div>
+    <div class="event-menu">
+      <% if !@user_event %>
+        <div class="event-menu">
+          <%= form_with url: user_events_path, local: true do |f|  %>
+            <%= f.hidden_field :event_id, :value => params[:id] %>
+            <%= f.submit "参加する", class: "btn btn-info" %>
+          <% end %>
+        <% else %>
+          <%= form_with url: user_event_path(@user_event), local: true, method: :delete do |f| %>
+            <%= f.submit "参加を取り消す", class: "btn btn-danger" %>
+          <% end %>
+        <% end %>
+        </div>
+        <div class="event-participants">
+          <div class="event-participant">
+            <% @participants.each do |participant| %>
+              <%= current_user.name%>
+            <% end %>
+          </div>
+        </div>
+    </div>
+  </div>

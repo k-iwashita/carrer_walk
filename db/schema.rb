@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_14_061731) do
+ActiveRecord::Schema.define(version: 2019_09_17_062453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2019_09_14_061731) do
     t.datetime "updated_at", null: false
     t.datetime "publish_start_at"
     t.datetime "publish_end_at"
-    t.boolean "publish_flg"
+    t.boolean "publish_flg", default: false, null: false
     t.datetime "deleted_at"
     t.bigint "upload_file_id"
     t.string "detail", limit: 10000
