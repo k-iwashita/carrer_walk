@@ -53,17 +53,19 @@ class Events
     begin
       agent = Mechanize.new
       page = agent.get(link)
-      title = page.at('.eventDetail-header-inner h1').inner_text if page.at('.eventDetail-header-inner')
+      title = page.at('h3 a span').inner_text if page.at('h3 a span')
       image = page.at('.image img')[:src] if page.at('.image img')
       location = page.at('//*[@id="mainContentArea"]/div[1]/div[2]/div[2]/div[1]/dl[2]/dd').inner_text if page.at('//*[@id="mainContentArea"]/div[1]/div[2]/div[2]/div[1]/dl[2]/dd')
       date = page.at('.eventAside-day')[:datetime] if page.at('.eventAside-day')
 
-      event = Event.where(url: link).first_or_initialize
-      event.title = title
-      event.image = image
-      event.location = location
-      event.date = date
-      event.save
+      if !(title.nil?)
+        event = Event.where(url: link).first_or_initialize
+        event.title = title
+        event.image = image
+        event.location = location
+        event.date = date
+        event.save 
+      end
     rescue => e
       puts e
     end
