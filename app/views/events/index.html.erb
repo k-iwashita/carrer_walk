@@ -8,7 +8,7 @@
 <h1 style="text-align: center; margin-bottom: 7vh;">勉強会一覧</h1>
 <% @events.each_slice(2) do |event_l, event_r| %>
   <div class="card-deck d-flex justify-content-center">
-    <div class="row no-gutters card--basic shadow-lg" style="margin-right: 3%;" onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='<%= event_l.url %>'">
+    <div class="row no-gutters card--basic shadow-lg" style="margin-right: 3%;" onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='events/<%= event_l.id  %>'">
       <div class="col-md-4 d-flex flex-wrap align-content-center">
         <%- if event_l.image %>
           <%= image_tag (event_l.image), class: "img-thumbnail" , style: "width: 300px;height:auto" %> 
@@ -25,7 +25,7 @@
       </div>
     </div>
 
-   <div class="row no-gutters card--basic shadow-lg" style="margin-left:3%;"onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='<%= event_r.url %>'">
+   <div class="row no-gutters card--basic shadow-lg" style="margin-left:3%;"onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='events/<%= event_r.id %>'">
       <div class="col-md-4 d-flex flex-wrap align-content-center">
         <%- if event_r.image %>
           <%= image_tag (event_r.image), class: "img-thumbnail", style: "width: 300px; height: auto"  %> 
