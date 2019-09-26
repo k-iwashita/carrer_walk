@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   def show 
     @event = Event.find(params[:id])
     @participants = User.where(id: @event.users)
-    @user_event = UserEvent.find_by(event_id: @event.id, user_id: current_user.id)
+    @user_event = UserEvent.find_by(event_id: @event.id, user_id: current_user.id) if current_user
     @participants = User.where(id: @event.users) 
   end
 

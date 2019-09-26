@@ -14,12 +14,12 @@ services:
    - "3000:3000"
   depends_on:
    - db
- server:
-  build: 
-   context: ./nginx
-  volumes:
-   - ./nginx/mysite.template:/etc/nginx/conf.d/mysite.template
-  ports:
-   - "80:80"
-  depends_on: 
-   - web
+     # server:
+     #  build: 
+     #   context: ./nginx
+     #  volumes:
+     #   - ./nginx/mysite.template:/etc/nginx/conf.d/mysite.template
+     #  ports:
+     #   - "80:80"
+     #  depends_on: 
+     #   - web
