@@ -1,2 +1,34 @@
-<h1>Internships#show</h1>
-<p>Find me in app/views/internships/show.html.erb</p>
+<div class="intern-wrapper">
+  <div class="container">
+    <div class="intern-main">
+      <%= image_tag (@intern.image), class:"img-fluid" %>
+      <h1 style="margin: 100px"><%= @intern.title  %></h1>
+      <p><%= @intern.detail  %></p>
+    </div>
+    <div class="intern-menu">
+      <% if !@intern_intern %>
+        <div class="intern-menu">
+          <%= form_with url: user_interns_path, local: true do |f|  %>
+            <%= f.hidden_field :intern_id, :value => params[:id] %>
+            <%= f.submit "参加する", class: "btn btn-info" %>
+          <% end %>
+        <% else %>
+          <%= form_with url: user_intern_path(@user_intern), local: true, method: :delete do |f| %>
+            <%= f.submit "参加を取り消す", class: "btn btn-danger" %>
+          <% end %>
+        <% end %>
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <h1 style="margin: 80px 0">参加者一覧</h1>
+        </div>
+          <div class="intern-participants">
+            <div class="intern-participant">
+              <% @participants.each do |participant| %>
+                <%= current_user.name%>
+              <% end %>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
