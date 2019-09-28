@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_17_062453) do
+ActiveRecord::Schema.define(version: 2019_09_28_091528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,9 @@ ActiveRecord::Schema.define(version: 2019_09_17_062453) do
     t.datetime "deleted_at"
     t.bigint "upload_file_id"
     t.string "detail", limit: 10000
+    t.text "overview"
+    t.text "agenda"
+    t.text "target"
     t.index ["upload_file_id"], name: "index_events_on_upload_file_id"
   end
 
