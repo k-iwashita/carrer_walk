@@ -7,6 +7,7 @@ class InternshipsController < ApplicationController
     @internships = Internship.all
   end 
 
-  def show
+  def show 
+    @intern = Internship.find(params[:id])
   end
 end

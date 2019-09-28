@@ -8,7 +8,7 @@
 <h1 style="text-align: center; margin-bottom: 7vh;">インターンシップ一覧</h1>
 <% @internships.each_slice(2) do |intern_l, intern_r| %>
   <div class="card-deck d-flex justify-content-center">
-    <div class="row no-gutters card--basic shadow-lg" style="margin-right: 3%;" onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='<%= intern_l.url %>'">
+    <div class="row no-gutters card--basic shadow-lg" style="margin-right: 3%;" onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='internships/<%= intern_l.id %>'">
       <div class="col-md-4 d-flex flex-wrap align-content-center">
         <%- if intern_l.image %>
           <%= image_tag (intern_l.image), class: "img-thumbnail" , style: "width: 300px;height:auto" %> 
@@ -25,7 +25,7 @@
       </div>
     </div>
 
-    <div class="row no-gutters card--basic shadow-lg" style="margin-left:3%;"onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='<%= intern_r.url %>'">
+    <div class="row no-gutters card--basic shadow-lg" style="margin-left:3%;"onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='internships/<%= intern_r.id %>'">
       <div class="col-md-4 d-flex flex-wrap align-content-center">
         <%- if intern_r.image %>
           <%= image_tag (intern_r.image), class: "img-thumbnail", style: "width: 300px; height: auto"  %> 

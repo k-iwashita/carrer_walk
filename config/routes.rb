@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'internships#index'
-  get 'internships/show'
+  get 'internships/:id', to: 'internships#show'
 
 
   resources :events
