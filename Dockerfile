@@ -4,13 +4,13 @@ RUN apt-get update -qq && apt-get install -y postgresql-client
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
       && apt-get install -y nodejs
 
-RUN mkdir /carrierWalk
-WORKDIR /carrierWalk
+RUN mkdir /careerWalk
+WORKDIR /careerWalk
 
-ADD Gemfile /carrierWalk/Gemfile
-ADD Gemfile.lock /carrierWalk/Gemfile.lock
+ADD Gemfile /careerWalk/Gemfile
+ADD Gemfile.lock /careerWalk/Gemfile.lock
 RUN bundle install
-ADD . /carrierWalk
+ADD . /careerWalk
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]

@@ -8,8 +8,8 @@ default: &default
 
 development:
   <<: *default
-  database: carrierWalk_development
+  database: careerWalk_development
 
 test:
   <<: *default
-  database: carrierWalk_test
+  database: careerWalk_test

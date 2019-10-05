@@ -1,5 +1,5 @@
 upstream puma {
-  server carrierwalk_web_1:3000;
+  server careerwalk_web_1:3000;
 }
 
 server {
