@@ -24,6 +24,7 @@
         </div>
       </div>
     </div>
+    <%if event_r%>
    <div class="row no-gutters card--basic shadow-lg" style="margin-left:3%;"onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='events/<%= event_r.id %>'">
       <div class="col-md-4 d-flex flex-wrap align-content-center">
         <%- if event_r.image %>
@@ -39,7 +40,8 @@
           <p class="float-right"><%= event_r.date  %></p>
         </div>
       </div>
-    </div>
+   </div>
+   <%end%>
   </div>
 <% end %>
 <%= paginate @events %>

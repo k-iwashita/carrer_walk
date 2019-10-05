@@ -1,5 +1,5 @@
 upstream puma {
-  server gudenal_web_1:3000;
+  server carrierwalk_web_1:3000;
 }
 
 server {

@@ -147,24 +147,24 @@ class Scraping
   end
   
   # 取得したリンクからインターンの詳細をスクレイピングで入手し、データベースへ保存
-  def self.get_careerbaito_projects(link)
-    agent = Mechanize.new
-    page = agent.get(link)
-    
-    name = page.at('.jobView_top_box_ttl').inner_text if page.at('.jobView_top_box_ttl')
-    company = page.at('.jobView_top_ttl_name span').inner_text if page.at('.jobView_top_ttl_name')
-    image = page.at(".jobView_top_img_cut img")[:src]
-    location = page.at(".jobView_top_box_detail_item_area span span").inner_text
-    companyLogo = page.at(".jobView_top_ttl_logo img")[:src]
-    
-    internship = Internship.where(title: name).first_or_initialize
-    internship.company = company
-    internship.image = image
-    internship.location = location
-    internship.companyLogo = companyLogo
-    internship.url = link
-    internship.save
-  end
+ # def self.get_careerbaito_projects(link)
+ #   agent = Mechanize.new
+ #   page = agent.get(link)
+ #   
+ #   name = page.at('.jobView_top_box_ttl').inner_text if page.at('.jobView_top_box_ttl')
+ #   company = page.at('.jobView_top_ttl_name span').inner_text if page.at('.jobView_top_ttl_name')
+ #   image = page.at(".jobView_top_img_cut img")[:src]
+ #   location = page.at(".jobView_top_box_detail_item_area span span").inner_text
+ #   companyLogo = page.at(".jobView_top_ttl_logo img")[:src]
+ #   
+ #   internship = Internship.where(title: name).first_or_initialize
+ #   internship.company = company
+ #   internship.image = image
+ #   internship.location = location
+ #   internship.companyLogo = companyLogo
+ #   internship.url = link
+ #   internship.save
+ # end
   
   
   
@@ -215,7 +215,7 @@ end
 # カテゴリが存在しなければ新しく作成
 # カテゴリと紐づけてインターン詳細を同時に保存
 
-Scraping.careerbaito
+#Scraping.careerbaito
 Scraping.infra
 Scraping.zero_one_intern
   
