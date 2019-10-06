@@ -19,6 +19,23 @@ body {
   min-width: 100%;
 }
 
+.center {
+  text-align: center;
+}
+
+.top-image{
+  width: 80%; 
+  height: auto;
+  margin-top: 5vh;
+  object-fit:cover;
+}
+
+.thumbnail{
+  width: 100%; 
+  height: 100%;
+  object-fit:cover;
+}
+
 .btn--basic {
   width: 20%;
   margin: 8vh 100px;

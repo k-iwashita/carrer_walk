@@ -1,48 +1,33 @@
 <% if !user_signed_in?  %>
-  <%= image_tag 'resource.png', class:"img-fluid" %>
+  <div class="center">
+    <%= image_tag 'resource.png', class:"top-image" %>
+  </div>
   <div class="d-flex justify-content-center">
     <%= link_to "新規登録", new_user_registration_path, class: "btn--basic shadow-lg", style:"font-weight:bold" %>
     <%= link_to "ログイン", new_user_session_path, class: "btn--basic shadow-lg", style:"font-weight:bold" %>
   </div>
 <% end %>
-<h1 style="text-align: center; margin-bottom: 7vh;">インターンシップ一覧</h1>
-<% @internships.each_slice(2) do |intern_l, intern_r| %>
-  <div class="card-deck d-flex  justify-content-center">
-    <div class="row no-gutters card--basic shadow-lg float-right" style="margin-right:3%" onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='internships/<%= intern_l.id %>'">
-      <div class="col-md-4 d-flex flex-wrap align-content-center">
-        <%- if intern_l.image %>
-          <%= image_tag (intern_l.image), class: "img-thumbnail" , style: "width: 300px;height:auto" %> 
-        <% else %>
-          <%= image_tag 'noImg', class: "img-thumbnail", style: "width: 300px;height: auto"  %>
-        <% end %>
-      </div>
-      <div class="col-md-8 d-flex flex-wrap align-content-center">
-        <div class="card-body">
-          <p class="card-text" style="text-align: left"><%= intern_l.location %></p>
-          <h5 class="card-title vuc" style="text-align: center"><%= intern_l.title %></h5>
-          <p class="float-right"><%= intern_l.date  %></p>
-        </div>
-      </div>
-    </div>
 
-    <% if intern_r %>
-    <div class="row no-gutters card--basic shadow-lg float-left" style="margin-left:3%"onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='internships/<%= intern_r.id %>'">
+<h1 style="text-align: center; margin-bottom: 7vh;">インターンシップ一覧</h1>
+
+<div class="card-deck d-flex">
+  <% @internships.each do |intern| %>
+    <div style="margin: 5%" class="row no-gutters card--basic shadow-lg float-right" onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='internships/<%= intern.id %>'">
       <div class="col-md-4 d-flex flex-wrap align-content-center">
-        <%- if intern_r.image %>
-          <%= image_tag (intern_r.image), class: "img-thumbnail", style: "width: 300px; height: auto"  %> 
+        <%- if intern.image %>
+          <%= image_tag (intern.image), class: "thumbnail" %> 
         <% else %>
-          <%= image_tag 'noImg', class: "img-thumbnail", style: "width: 300px; height: auto"  %>
+          <%= image_tag 'noImg', class: "thumbnail"  %>
         <% end %>
       </div>
       <div class="col-md-8 d-flex flex-wrap align-content-center">
         <div class="card-body">
-          <p class="card-text" style="text-align: left"><%= intern_r.location %></p>
-          <h5 class="card-title vuc" style="text-align: center"><%= intern_r.title %></h5>
-          <p class="float-right"><%= intern_r.date  %></p>
+          <p class="card-text" style="text-align: left"><%= intern.location %></p>
+          <h5 class="card-title vuc" style="text-align: center"><%= intern.title %></h5>
+          <p class="float-right"><%= intern.date  %></p>
         </div>
       </div>
     </div>
-  <%end%>
-  </div>
-<% end %>
+  <% end %>
+</div>
 <%= paginate @internships %>

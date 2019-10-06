@@ -1,19 +1,16 @@
-<div class="intern-wrapper">
+<div class="internship-wrapper">
   <div class="container">
-    <div class="intern-main">
-      <%= image_tag (@intern.image), class:"img-fluid" %>
-      <h1 style="margin: 100px"><%= @intern.title  %></h1>
-      <p><%= @intern.company %></p>
+    <div class="internship-main">
+      <% if @intern.image %>
+        <%= image_tag (@intern.image), class:"img-fluid" %>
+      <% else %>
+        <%= image_tag 'noImg' , class:"img-fluid" %>
+      <% end %>
+      <h1 style="margin: 50px"><%= @intern.title  %></h1>
+      <p style="text-align: right;"><%= @intern.company  %></p>
     </div>
-    <div class="intern-menu">
-        <div class="intern-menu">
-          <%= link_to "参加する", @intern.url %>
-        </div>
-
-        <div class="d-flex justify-content-center">
-        </div>
-          <div class="intern-participants">
-          </div>
-        </div>
+    <div class="internship-menu" style="text-align:center;margin: 40px">
+      <%= link_to "参加する", @intern.url, class: "btn btn-info" %>
     </div>
   </div>
+</div>

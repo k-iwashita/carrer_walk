@@ -1,47 +1,32 @@
 <% if !user_signed_in?  %>
-  <%= image_tag 'resource.png', class:"img-fluid" %>
+  <div class="center">
+    <%= image_tag 'resource.png', class:"top-image" %>
+  </div>
   <div class="d-flex justify-content-center">
     <%= link_to "新規登録", new_user_registration_path, class: "btn--basic shadow-lg", style:"font-weight:bold" %>
     <%= link_to "ログイン", new_user_session_path, class: "btn--basic shadow-lg", style:"font-weight:bold" %>
   </div>
 <% end %>
 <h1 style="text-align: center; margin-bottom: 7vh;">勉強会一覧</h1>
-<% @events.each_slice(2) do |event_l, event_r| %>
-  <div class="card-deck d-flex justify-content-center">
-    <div class="row no-gutters card--basic shadow-lg" style="margin-right: 3%;" onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='events/<%= event_l.id  %>'">
+
+<div class="card-deck d-flex">
+  <% @events.each do |event| %>
+    <div style="margin: 5%" class="row no-gutters card--basic shadow-lg float-right" onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='events/<%= event.id %>'">
       <div class="col-md-4 d-flex flex-wrap align-content-center">
-        <%- if event_l.image %>
-          <%= image_tag (event_l.image), class: "img-thumbnail" , style: "width: 300px;height:auto" %> 
+        <%- if event.image %>
+          <%= image_tag (event.image), class: "thumbnail" %> 
         <% else %>
-          <%= image_tag 'noImg', class: "img-thumbnail", style: "width: 300px;height: auto"  %>
+          <%= image_tag 'noImg', class: "thumbnail"  %>
         <% end %>
       </div>
       <div class="col-md-8 d-flex flex-wrap align-content-center">
         <div class="card-body">
-          <p class="card-text" style="text-align: left"><%= event_l.location %></p>
-          <h5 class="card-title vuc" style="text-align: center"><%= event_l.title %></h5>
-          <p class="float-right"><%= event_l.date  %></p>
+          <p class="card-text" style="text-align: left"><%= event.location %></p>
+          <h5 class="card-title vuc" style="text-align: center"><%= event.title %></h5>
+          <p class="float-right"><%= event.date  %></p>
         </div>
       </div>
     </div>
-    <%if event_r%>
-   <div class="row no-gutters card--basic shadow-lg" style="margin-left:3%;"onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='events/<%= event_r.id %>'">
-      <div class="col-md-4 d-flex flex-wrap align-content-center">
-        <%- if event_r.image %>
-          <%= image_tag (event_r.image), class: "img-thumbnail", style: "width: 300px; height: auto"  %> 
-        <% else %>
-          <%= image_tag 'noImg', class: "img-thumbnail", style: "width: 300px; height: auto"  %>
-        <% end %>
-      </div>
-      <div class="col-md-8 d-flex flex-wrap align-content-center">
-        <div class="card-body">
-          <p class="card-text" style="text-align: left"><%= event_r.location %></p>
-          <h5 class="card-title vuc" style="text-align: center"><%= event_r.title %></h5>
-          <p class="float-right"><%= event_r.date  %></p>
-        </div>
-      </div>
-   </div>
-   <%end%>
-  </div>
-<% end %>
+  <% end %>
+</div>
 <%= paginate @events %>
