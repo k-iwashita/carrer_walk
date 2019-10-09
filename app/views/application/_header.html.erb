@@ -18,6 +18,11 @@
           <%= link_to "新規登録", new_user_registration_path, class: "btn", style: "font-weight: bold"%>
           <%= link_to "ログイン", new_user_session_path, class: "btn", style: "font-weight: bold" %>
         </div>
+      <% else %>
+        <div class="navbar-nav">
+          <%= current_user.name %>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+        </div>
       <% end %>
     </div>
   </div>

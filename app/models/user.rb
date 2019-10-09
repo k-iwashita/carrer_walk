@@ -16,21 +16,13 @@ class User < ApplicationRecord
   has_many :user_events, dependent: :destroy
   has_many :events, through: :user_events 
 
-  def self.find_for_oauth(auth)
-    user = User.where(uid: auth.id, provider: auth.provider).first
-
-    unless user
-      user = User.create(
-        uid: auth.uid,
-        provider: auth.provider,
-        email: User.dummy_email(auth),
-        password: Devise.friendly_token[0,20],
-        image: auth.info.image,
-        name: auth.info.name,
-      )
-    end 
-
-    user 
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = User.dummy_email(auth)
+      user.password = Devise.friendly_token[0,20]
+      user.name = auth.info.image
+      user.name =  auth.info.name
+      end 
   end  
 
   private 
