@@ -11,7 +11,7 @@
 
 <div class="card-deck d-flex">
   <% @events.each do |event| %>
-    <div style="margin: 5%" class="row no-gutters card--basic shadow-lg float-right" onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='events/<%= event.id %>'">
+    <div style="min-width: 40%;margin: 5%" class="row no-gutters card--basic shadow-lg float-right" onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='events/<%= event.id %>'">
       <div class="col-md-4 d-flex flex-wrap align-content-center">
         <%- if event.image %>
           <%= image_tag (event.image), class: "thumbnail" %> 

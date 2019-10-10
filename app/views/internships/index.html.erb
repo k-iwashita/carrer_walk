@@ -12,7 +12,7 @@
 
 <div class="card-deck d-flex">
   <% @internships.each do |intern| %>
-    <div style="margin: 5%" class="row no-gutters card--basic shadow-lg float-right" onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='internships/<%= intern.id %>'">
+    <div style="min-width: 40%;margin: 5%" class="row no-gutters card--basic shadow-lg float-right" onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='internships/<%= intern.id %>'">
       <div class="col-md-4 d-flex flex-wrap align-content-center">
         <%- if intern.image %>
           <%= image_tag (intern.image), class: "thumbnail" %> 
