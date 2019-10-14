@@ -1,0 +1,19 @@
+<header>
+  <nav>
+    <div class="container">
+      <h2>Career Walk</h2> 
+      <ul class="nav-list">
+        <li>
+          <a href="#">カテゴリ一覧</a>
+        </li>
+        <li>
+          <a href="#">新着イベント</a>
+        </li>
+      </ul>
+      <div class="user-info">
+        <%= image_tag current_user.image, width: "", height: ""  %>
+        <p><%= current_user.name %></p>
+      </div>
+    </div>
+  </nav>
+</header>
