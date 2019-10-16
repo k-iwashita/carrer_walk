@@ -1,74 +1,66 @@
 // Place all the styles related to the events controller here.
 // They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-@import "bootstrap"; 
+// You can use Sass (SCSS) here: http://sass-lang.comclass
 
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
-html {
-  overflow: auto;
+.event_wrapper {
+  .container {
+    display: flex;
+  }
 }
 
-body {
-  overflow: hidden;
-  min-width: 100%;
+.main_content {
+  width: 70%;
 }
 
-.center {
-  text-align: center;
+.side_content {
+  width: 30%;
 }
 
-.top-image{
-  width: 80%; 
-  height: auto;
-  margin-top: 5vh;
-  object-fit:cover;
+.date_bar {
+  width: 100%;
+  height: 30px;
+  background: #2680EB;
+  border-radius: 5px;
+  color: white;
+  padding: 0 30px;
+  line-height: 30px;
+  margin: 20px 0;
 }
 
-.thumbnail{
-  width: 100%; 
-  height: 100%;
-  object-fit:cover;
+.event {
+  display: flex;
+  padding: 15px;
+  border-bottom: 1px solid #e9e9e9;
 }
 
-.btn--basic {
-  width: 20%;
-  margin: 8vh 100px;
-  padding: 10px;
-  border: 2px solid blue;
-  border-radius: 50px;
-  text-align: center;
-  font-size: large;
-  color: black;
+.event_image {
+  min-width: 220px;
+  min-height: 130px;
+  margin-right: 30px;
 }
 
-.card--basic {
-  max-width: 40%;
-  margin-top: 5%;
-  margin-bottom: 5%;
+.event_detail {
+  width: 600px;
+  border-left: 1px solid #e9e9e9;
+  padding: 0 20px;
 }
 
-.event-main {
-  margin: 100px auto;
-  text-align: center;
+.event_title {
+  font-size: 20px;
+  width: 75%;
 }
 
-.event-menu {
-  text-align: center; 
-  margin-bottom: 100px;
-}
-
-.event-participants {
-  border: solid 1px #DDD;
-  border-radius: 4px;
-  padding: 10px 20px;
-  margin: 40px auto;
-  width: 80%;
-}
-
-.pagination {
-  text-align: center;
+.event_address {
+  font-size: 16px;
+  i {
+    margin-right: 5px;
+  }
+  p {
+    display: inline-block;
+  }
 }

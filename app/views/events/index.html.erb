@@ -1,32 +1,34 @@
-<% if !user_signed_in?  %>
-  <div class="center">
-    <%= image_tag 'resource.png', class:"top-image" %>
-  </div>
-  <div class="d-flex justify-content-center">
-    <%= link_to "新規登録", new_user_registration_path, class: "btn--basic shadow-lg", style:"font-weight:bold" %>
-    <%= link_to "ログイン", new_user_session_path, class: "btn--basic shadow-lg", style:"font-weight:bold" %>
-  </div>
-<% end %>
-<h1 style="text-align: center; margin-bottom: 7vh;">勉強会一覧</h1>
-
-<div class="card-deck d-flex">
-  <% @events.each do |event| %>
-    <div style="min-width: 40%;margin: 5%" class="row no-gutters card--basic shadow-lg float-right" onmouseover="over(this)" onmouseout="out(this)" onclick="location.href='events/<%= event.id %>'">
-      <div class="col-md-4 d-flex flex-wrap align-content-center">
-        <%- if event.image %>
-          <%= image_tag (event.image), class: "thumbnail" %> 
-        <% else %>
-          <%= image_tag 'noImg', class: "thumbnail"  %>
-        <% end %>
+<div class="event_wrapper">
+  <div class="container">
+    <div class="main_content">
+      <div class="events">
+        <% last_date = nil  %>
+        <% @events.each do |event| %>
+          <% event_date =  event.date.to_date  %>
+          <% if event_date != last_date  %>
+            <div class="date_bar">
+              <%= l(event_date, format: :long)  %>
+            </div>
+            <% end %>
+            <% last_date = event_date  %>
+          <div class="event">
+            <div class="event_image">
+              <% if event.image  %>
+              <%= image_tag event.image, width: "220px", height: "130xp"  %>
+            <% end %>
+            </div>
+            <div class="event_detail">
+              <h3 class="event_title"><%= event.title %></h3>
+              <div class="event_time"></div>
+              <div class="event_address">
+                <%= icon "fas", "map-marker-alt" %><%= event.location  %>
+              </div>
+            </div>
+          </div>
+        <% end  %>
       </div>
-      <div class="col-md-8 d-flex flex-wrap align-content-center">
-        <div class="card-body">
-          <p class="card-text" style="text-align: left"><%= event.location %></p>
-          <h5 class="card-title vuc" style="text-align: center"><%= event.title %></h5>
-          <p class="float-right"><%= event.date  %></p>
-        </div>
+      <div class="side_content">
       </div>
     </div>
-  <% end %>
-</div>
-<%= paginate @events %>
+  </div>
+  <%= paginate @events  %>
