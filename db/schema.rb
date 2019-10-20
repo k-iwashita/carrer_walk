@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_16_081148) do
+ActiveRecord::Schema.define(version: 2019_10_20_065003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2019_10_16_081148) do
     t.text "agenda"
     t.text "target"
     t.string "site"
+    t.string "owner"
     t.index ["upload_file_id"], name: "index_events_on_upload_file_id"
   end
 

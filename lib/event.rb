@@ -2,16 +2,22 @@
 
 class Events
   def self.connpass_urls
-    url = "https://connpass.com/search/?q=&start_from=2019%2F07%2F20&start_to=2020%2F01%2F05&prefectures=osaka&selectItem=osaka"
+    date = Date.today
     links = []
     agent = Mechanize.new
-    page = agent.get(url)
-    elements = page.search('.summary')
-    elements.each do |ele|
-      links << ele[:href]
+
+    for i in 1..14 do
+      url = "https://connpass.com/search/?page=#{i}&q=&selectItem=osaka&prefectures=osaka&start_to=&start_from=#{date.year}%2F#{date.month}%2F#{date.day}"
+      current_page = agent.get(url)
+      elements = current_page.search('.summary')
+      elements.each do |ele|
+        links << ele[:href]
+      end
     end
+
     links.each do |link|
       get_event(link)
+      sleep 5
     end
   end
 
@@ -23,12 +29,14 @@ class Events
       image = page.at('.event_header_area a')[:href] if page.at('.event_header_area a')
       location = page.at('.adr').inner_text if page.at('.adr')
       date = page.at('.ymd').inner_text if page.at('.ymd')
+      owner = 
 
       event = Event.where(url: link).first_or_initialize
       event.title = title
       event.image = image
       event.location = location
       event.date = date
+      event.site = "connpass"
       event.save
     rescue => e
       puts e
@@ -64,7 +72,8 @@ class Events
         event.image = image
         event.location = location
         event.date = date
-        event.save 
+        event.site ="Tech_play"
+        event.save
       end
     rescue => e
       puts e
@@ -99,6 +108,7 @@ class Events
       event.image = image
       event.location = location
       event.date = date
+      event.site = "doorkeeper"
       event.save
     rescue => e
       puts e

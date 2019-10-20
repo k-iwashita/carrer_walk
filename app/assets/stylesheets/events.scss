@@ -34,7 +34,7 @@
 
 .event {
   display: flex;
-  padding: 15px;
+  padding: 15px 0 15px 15px;
   border-bottom: 1px solid #e9e9e9;
 }
 
@@ -47,10 +47,12 @@
 .event_detail {
   width: 600px;
   border-left: 1px solid #e9e9e9;
-  padding: 0 20px;
+  padding-left: 20px;
+  position: relative;
 }
 
 .event_title {
+  display: inline-block;
   font-size: 20px;
   width: 75%;
 }
@@ -63,4 +65,10 @@
   p {
     display: inline-block;
   }
+}
+
+.event_site {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
