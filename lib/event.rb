@@ -29,7 +29,7 @@ class Events
       image = page.at('.event_header_area a')[:href] if page.at('.event_header_area a')
       location = page.at('.adr').inner_text if page.at('.adr')
       date = page.at('.ymd').inner_text if page.at('.ymd')
-      owner = 
+      owner = page.at(".group_title a").inner_text if page.at("group_title")
 
       event = Event.where(url: link).first_or_initialize
       event.title = title

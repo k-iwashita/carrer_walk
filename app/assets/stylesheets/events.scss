@@ -42,6 +42,9 @@
   min-width: 220px;
   min-height: 130px;
   margin-right: 30px;
+  img:hover {
+    opacity: 0.7;
+  }
 }
 
 .event_detail {
@@ -53,8 +56,16 @@
 
 .event_title {
   display: inline-block;
+  color: #212529;
+  text-decoration: none;
   font-size: 20px;
   width: 75%;
+}
+
+.event_title:hover {
+  text-decoration: none;
+  color: #212529;
+  opacity: 0.8;
 }
 
 .event_address {
