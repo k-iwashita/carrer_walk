@@ -18,7 +18,11 @@
     </div>
     <div class="side_content">
       <div class="event_location_wrap">
-        <p>aaa</p>
+        <h3><%= icon "fas", "map-marker-alt", class: "mr-2" %>会場</h3>
+        <p><%= @event.location %></p>
+        <div class="google_map">
+
+        </div>
       </div>
       <div class="event_date_wrap">
 

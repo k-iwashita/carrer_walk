@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_20_065003) do
+ActiveRecord::Schema.define(version: 2019_10_22_103124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,14 +40,9 @@ ActiveRecord::Schema.define(version: 2019_10_20_065003) do
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "publish_start_at"
-    t.datetime "publish_end_at"
     t.datetime "deleted_at"
     t.bigint "upload_file_id"
     t.string "detail", limit: 10000
-    t.text "overview"
-    t.text "agenda"
-    t.text "target"
     t.string "site"
     t.string "owner"
     t.index ["upload_file_id"], name: "index_events_on_upload_file_id"

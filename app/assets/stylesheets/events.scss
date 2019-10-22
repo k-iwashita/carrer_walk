@@ -94,7 +94,7 @@
   .event_show_title {
     font-size: 28px;
     position: relative;
-    padding: 0 0 10px 63px;
+    padding: 0 0 20px 63px;
     border-bottom: 3px dotted #d5d5d5;
     margin-bottom: 18px;
   }
@@ -131,4 +131,9 @@
 
 .event_location_wrap {
   background: #f5f5f5;
+  padding: 10px;
+  border-radius: 4px;
+  h3 {
+    text-align: center;
+  }
 }
