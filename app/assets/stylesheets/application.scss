@@ -13,6 +13,11 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap"; 
+@import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+
+p {
+  padding: 0;
+  margin: 0;
+}
