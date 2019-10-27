@@ -2,7 +2,7 @@ class EventsController < ApplicationController
    before_action :authenticate_user! ,only: [:new, :create]
 
   def index
-    @events = Event.order(:date).page(params[:page]).per(20)
+    @events = Event.order(:started_at).page(params[:page]).per(20)
   end
 
   def show

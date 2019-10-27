@@ -4,7 +4,7 @@
       <div class="events">
         <% last_date = nil  %>
         <% @events.each do |event| %>
-          <% event_date =  event.date.to_date  %>
+          <% event_date =  event.started_at.to_date  %>
           <% if event_date != last_date  %>
             <div class="date_bar">
               <%= l(event_date, format: :long)  %>

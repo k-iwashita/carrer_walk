@@ -110,6 +110,7 @@ GEM
     hashie (3.6.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
+    httpclient (2.8.3)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
@@ -333,6 +334,7 @@ DEPENDENCIES
   devise-i18n
   factory_bot_rails
   font-awesome-sass
+  httpclient
   i18n
   jbuilder (~> 2.5)
   jquery-rails
