@@ -3,25 +3,31 @@ require 'json'
 require 'uri'
 require 'net/http'
 
-connpass_uri = URI.parse("https://connpass.com/api/v1/event/?order=2&keyword=osaka&count=100")
-connpass_json = Net::HTTP.get(connpass_uri)
-connpass_result = JSON.parse(connpass_json)
 
-connpass_events  = connpass_result['events']
-connpass_events.each do |e|
-  event = Event.where(url: e["event_url"]).first_or_initialize
-  event.title = e["title"]
-  event.description = e["description"]
-  event.location = e["place"]
-  event.address = e["address"]
-  event.lon = e["lon"]
-  event.lat = e["lat"]
-  event.started_at = e["started_at"]
-  event.ended_at = e["ended_at"]
-  event.site = "connpass"
-  event.save
-end
+# connpass_url = URI.parse("https://connpass.com/api/v1/event/?order=2&keyword=osaka&count=100")
+# connpass_json = Net::HTTP.get(connpass_url)
+# connpass_result = JSON.parse(connpass_json)
+#
+# connpass_events  = connpass_result['events']
+# connpass_events.each do |e|
+#   event = Event.where(url: e["event_url"]).first_or_initialize
+#   event.title = e["title"]
+#   event.description = e["description"]
+#   event.location = e["place"]
+#   event.address = e["address"]
+#   event.lon = e["lon"]
+#   event.lat = e["lat"]
+#   event.started_at = e["started_at"]
+#   event.ended_at = e["ended_at"]
+#   event.site = "connpass"
+#   event.save
+# end
 
+doorkeeper_url = URI.parse("https://api.doorkeeper.jp/")
+doorkeeper_json = Net::HTTP.get(connpass_url)
+connpass_result = JSON.parse(doorkeeper_json)
+
+p connpass_result
 
 
 
