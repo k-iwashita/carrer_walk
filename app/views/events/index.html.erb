@@ -16,18 +16,20 @@
               <%= link_to(event_path(event)) do %>
                 <% if event.image  %>
                   <%= image_tag event.image, width: "220px", height: "130xp"  %>
+                <% elsif event.site %>
+                  <div class="site_logo">
+                    <% if event.site == "doorkeeper" %>
+                      <%= image_tag "doorkeeper.png", width: "140px", height: "30px" %>
+                    <% elsif event.site == "connpass" %>
+                      <%= image_tag("connpass.png", width: "120px", height: "40px") %>
+                    <% end %>
+                  </div>
                 <% end %>
               <% end %>
             </div>
             <div class="event_detail">
               <%= link_to "#{event.title}",event_path(event), class: "event_title" %>
               <div class="event_site">
-                <% if event.site = "connpass" %>
-                  <%= image_tag("connpass_logo_1.png", width: "100px", height: "30px") %>
-                <% elsif event.site = "Tech_play" %>
-                <% elsif event.site = "doorkeeper" %>
-                  <%= image_tag "doorkeeper-logo.png" %>
-                <% end %>
               </div>
               <div class="event_time"></div>
               <div class="event_address">
