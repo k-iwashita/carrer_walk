@@ -13,17 +13,29 @@
         </div>
       </div>
       <div class="event_detail_wrap">
-          
+        <p class="event_detail"><%= icon "fas", "info-circle" %>イベント詳細</p>
+        <div class="event_detail_content">
+          <% if @event.site %>
+            <%= link_to "詳細を確認する", @event.url, class: "event_detail_btn" %>
+          <% end %>
+        </div>
       </div>
     </div>
     <div class="side_content">
       <div class="event_location_wrap">
         <h3><%= icon "fas", "map-marker-alt", class: "mr-2" %>会場</h3>
         <p><%= @event.location %></p>
-        <div class="google_map">
+        <div id="map" style="width: 200px; height: 400px;"></div>
 
+          <script>
+            handler = Gmaps.build('Google');
+            handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+              markers = handler.addMarkers(<%= raw @hash.to_json %>);
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+            });
+          </script>
         </div>
-      </div>
       <div class="event_date_wrap">
 
       </div>

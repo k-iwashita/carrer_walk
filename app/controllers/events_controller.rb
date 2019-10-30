@@ -10,6 +10,12 @@ class EventsController < ApplicationController
     @participants = User.where(id: @event.users)
     @user_event = UserEvent.find_by(event_id: @event.id, user_id: current_user.id) if current_user
     @participants = User.where(id: @event.users)
+
+    @hash = Gmaps4rails.build_markers(@event) do |place, marker|
+      marker.lat event.lat
+      marker.lng event.long
+      marker.infowindow event.location
+    end
   end
 
   def new
