@@ -9,8 +9,17 @@
           </span>
           <%= @event.title %>
         </h2>
-        <div class="thumbnail" style="background-image: url(<%= @event.image %>)">
-        </div>
+        <% if @event.image %>
+          <div class="thumbnail" style="background-image: url(<%= @event.image %>)"></div>
+        <% elsif @event.site == "doorkeeper" %>
+          <div class="thumbnail">
+            <%= image_tag("doorkeeper.png", style: "margin: 104px auto", width: "360px") %>
+          </div>
+        <% elsif @event.site == "connpass" %>
+          <div class="thumbnail">
+            <%= image_tag("connpass.png", style: "margin: 71px auto") %>
+          </div>
+        <% end %>
       </div>
       <div class="event_detail_wrap">
         <p class="event_detail"><%= icon "fas", "info-circle" %>イベント詳細</p>
@@ -24,15 +33,16 @@
     <div class="side_content">
       <div class="event_location_wrap">
         <h3><%= icon "fas", "map-marker-alt", class: "mr-2" %>会場</h3>
-        <p><%= @event.location %></p>
-        <div id="map" style="width: 200px; height: 400px;"></div>
-
+        <p class="event_location"><%= @event.location %></p>
+        <p class="event_address"><%= @event.address %></p>
+        <div id="map"></div>
           <script>
             handler = Gmaps.build('Google');
             handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
               markers = handler.addMarkers(<%= raw @hash.to_json %>);
               handler.bounds.extendWith(markers);
               handler.fitMapToBounds();
+              handler.getMap().setZoom(15);
             });
           </script>
         </div>

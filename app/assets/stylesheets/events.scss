@@ -143,6 +143,18 @@
   h3 {
     text-align: center;
   }
+  .event_location {
+    font-weight: bold;
+    padding-bottom: 5px;
+  }
+  .event_address {
+    font-size: 12px;
+  }
+
+  #map {
+    height: 300px;
+    margin: 20px auto 0 auto;
+  }
 }
 
 
@@ -160,5 +172,5 @@
 }
 
 .event_detail_content {
-  
+
 }
