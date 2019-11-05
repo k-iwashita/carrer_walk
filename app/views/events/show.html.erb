@@ -4,8 +4,9 @@
       <div class="event_title_wrap">
         <h2 class="event_show_title">
           <span class="event_date_budge">
-            <p class="month">10月</p>
-            <p class="day">22</p>
+            <% event_date =  @event.started_at.to_date  %>
+            <p class="month"><%= l(event_date, format: :just_month) %></p>
+            <p class="day"><%= l(event_date, format: :just_date) %></p>
           </span>
           <%= @event.title %>
         </h2>
@@ -25,7 +26,9 @@
         <p class="event_detail"><%= icon "fas", "info-circle" %>イベント詳細</p>
         <div class="event_detail_content">
           <% if @event.site %>
-            <%= link_to "詳細を確認する", @event.url, class: "event_detail_btn" %>
+            <div class="event_detail_btn">
+              <%= link_to "詳細を確認する", @event.url%>
+            </div>
           <% end %>
         </div>
       </div>
@@ -42,12 +45,23 @@
               markers = handler.addMarkers(<%= raw @hash.to_json %>);
               handler.bounds.extendWith(markers);
               handler.fitMapToBounds();
-              handler.getMap().setZoom(15);
+              handler.getMap().setZoom(17);
             });
           </script>
         </div>
       <div class="event_date_wrap">
-
+        <div class="event_date_content">
+          <div class="event_date_status">
+            <% if @event.started_at > Time.now %>
+              <p style="background: #FFCC66;">開催前</p>
+            <% else %>
+              <p style="background: #aaa">終了</p>
+            <% end %>
+          </div>
+          <p class="event_date"><%= l(event_date, format: :long) %></p>
+          <p class="event_started_at"><%= l(@event.started_at, format: :just_time)%></p>
+          <p class="event_ended_at"><span>~</span><%= l(@event.ended_at, format: :just_time) %></p>
+        </div>
       </div>
       <div class="event_owner_wrap">
 

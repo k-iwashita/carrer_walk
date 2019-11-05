@@ -1,7 +1,7 @@
 <header>
   <nav>
     <div class="container">
-      <h2>Career Walk</h2>
+      <%= link_to "Career Walk", root_path, style: "font-size: 36px;" %>
       <ul class="nav-list">
         <li>
           <a href="#">カテゴリ一覧</a>
@@ -11,10 +11,15 @@
         </li>
       </ul>
       <% if current_user  %>
+        <%= link_to user_path(current_user) do %>
         <div class="user-info">
-          <%= image_tag current_user.image, width: "", height: ""  %>
+          <% if current_user.image %>
+            <%= image_tag current_user.image, width: "48px", height: "48px"  %>
+          <% end %>
           <p><%= current_user.name %></p>
         </div>
+        <% end %>
+        <%= link_to "ログアウト", destroy_user_session_path %>
       <% else %>
         <div class="user-registration">
         <%= link_to "ログイン", new_user_session_path %>

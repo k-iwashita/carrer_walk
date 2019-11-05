@@ -9,6 +9,7 @@
 
 
 .event_wrapper {
+  margin-bottom: 100px;
   .container {
     display: flex;
   }
@@ -68,6 +69,16 @@
   text-decoration: none;
   font-size: 20px;
   width: 75%;
+}
+
+.event_time {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 5px 10px;
+  border-radius: 4px;
+  background: #2680EB;
+  color: white;
 }
 
 .event_title:hover {
@@ -136,10 +147,37 @@
   }
 }
 
+.event_detail_wrap {
+  background: #f5f5f5;
+  padding: 10px;
+  min-height: 20px;
+  width: 708px;
+  margin: 0 auto;
+  border-radius: 4px;
+
+  .event_detail_content {
+    background: white;
+    padding: 10px;
+  }
+
+  .event_detail_btn {
+    margin: 20px auto;
+    width: 200px;
+    text-align: center;
+    background: #1C2DFF;
+    border-radius: 5px;
+    padding: 5px;
+    a {
+      color: white;
+    }
+  }
+}
+
 .event_location_wrap {
   background: #f5f5f5;
   padding: 10px;
   border-radius: 4px;
+  margin-bottom: 20px;
   h3 {
     text-align: center;
   }
@@ -158,19 +196,31 @@
 }
 
 
-.event_detail_wrap {
+.event_date_wrap {
   background: #f5f5f5;
   padding: 10px;
-  min-height: 20px;
-  width: 708px;
-  margin: 0 auto;
   border-radius: 4px;
-}
-
-.event_detail {
-  font-size: 24px;
-}
-
-.event_detail_content {
-
+  .event_date_status{
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px;
+    p {
+      color: white;
+    }
+  }
+  .event_date_content {
+    background: white;
+    text-align: center;
+    padding-bottom: 40px;
+    .event_date {
+      font-size: 24px;
+    }
+    .event_started_at {
+      font-size: 24px;
+      display: inline;
+    }
+    .event_ended_at {
+      display: inline;
+    }
+  }
 }

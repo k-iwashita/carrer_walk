@@ -21,3 +21,37 @@
   margin: 100px auto;
   width: 800px;
 }
+
+// ゆーざー詳細画面
+
+.user_wrapper {
+  margin-bottom: 100px;
+  .container {
+    display: flex;
+  }
+}
+
+.user_status {
+  border: solid 1px #707070;
+  display: flex;
+  .status_content {
+    border-left: solid 1px #707070;
+    padding: 20px;
+    width: 33%;
+  }
+  .user_name {
+    img {
+      border-radius: 25px;
+    }
+    p {
+      display: inline-block;
+      font-size: 18px;
+    }
+  }
+}
+
+// ユーザー詳細　サイドバー
+
+.user_profile {
+  border: solid 1px #707070;
+}

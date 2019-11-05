@@ -2,12 +2,13 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
-  root 'events#index'
-  get 'internships/:id', to: 'internships#show'
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
 
+  root 'events#index'
 
   resources :events
-  resources :jobs
-  resources :lessons
+  resources :users
   resources :user_events, only: [:create, :destroy]
 end

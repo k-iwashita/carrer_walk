@@ -11,6 +11,6 @@ class Event < ApplicationRecord
 
  has_many :upload_files, dependent: :destroy
 
- geocoded_by :location
- after_validation :gecode
+ # geocoded_by :address
+ # after_validation :geocode
 end

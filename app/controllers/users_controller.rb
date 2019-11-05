@@ -1,2 +1,8 @@
 class UsersController < ApplicationController
-end 
+
+  def show
+    @user = User.find(params[:id])
+    @events = Event.where(id: @user.events)
+  end
+
+end

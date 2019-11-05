@@ -28,10 +28,7 @@
     <%= render "users/shared/links" %>
     <div class="sns-login">
       <div class="login-btn">
-        <%= link_to "Twitterでログイン", user_twitter_omniauth_authorize_path(:twitter), class: "btn btn-info"  %>
-      </div>
-      <div class="login-btn">
-        <a href="#" class="btn btn-info">Twitterでログイン</a>
+        <%= link_to "Twitterでログイン", user_twitter_omniauth_authorize_path, class: "btn btn-info"  %>
       </div>
     </div>
   </div>
