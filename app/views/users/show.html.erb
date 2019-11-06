@@ -7,10 +7,12 @@
           <p><%= @user.name %></p>
         </div>
         <div class="status_content user_events_count">
-
+          <p><%= icon "", "" %> <%= @events.count %></p>
+          <p>参加イベント数</p>
         </div>
         <div class="status_content user_level">
-
+          <%= icon "", "" %>
+          <p class="level">Lv.30</p>
         </div>
       </div>
       <div class="events">
@@ -55,11 +57,26 @@
             </div>
           </div>
         <% end  %>
+        <% if @events.empty? %>
+          <h3>参加したイベントはありません</h3>
+        <% end  %>
       </div>
     </div>
     <div class="side_content">
       <div class="user_profile">
-
+        <div class="user_profile_image">
+          <%= image_tag @user.image, width: "80px", height: "80px" %>
+        </div>
+        <h3><%= @user.name %></h3>
+        <p class="user_profile_detail">
+          <%= @user.profile %>
+        </p>
+        <a href="#" class="user_portfolio_btn">ポートフォリオを見る</a>
+        <div class="user_menu">
+          <% if @user == current_user %>
+            <a href="#" class="user_edit_btn">プロフィールを編集する</a>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
