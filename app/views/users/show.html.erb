@@ -71,7 +71,7 @@
         <p class="user_profile_detail">
           <%= @user.profile %>
         </p>
-        <a href="#" class="user_portfolio_btn">ポートフォリオを見る</a>
+        <%= link_to "ポートフォリオを見る", "#{@user.id}/portfolio", class: "user_portfolio_btn" %>
         <div class="user_menu">
           <% if @user == current_user %>
             <a href="#" class="user_edit_btn">プロフィールを編集する</a>

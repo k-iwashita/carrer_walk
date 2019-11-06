@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   root 'events#index'
 
+  get 'users/:id/portfolio', to: 'users#portfolio'
+
   resources :events
   resources :users
   resources :user_events, only: [:create, :destroy]

@@ -29,6 +29,8 @@
             <div class="event_detail_btn">
               <%= link_to "詳細を確認する", @event.url%>
             </div>
+          <% else %>
+            <%= markdown(@event.description).html_safe %>
           <% end %>
         </div>
       </div>
@@ -63,12 +65,16 @@
           <p class="event_ended_at"><span>~</span><%= l(@event.ended_at, format: :just_time) %></p>
         </div>
       </div>
+      <% if @event.owner %>
       <div class="event_owner_wrap">
 
       </div>
+      <% end %>
+      <% if @event.users.any? %>
       <div class="event_paticipation_wrap">
 
       </div>
+      <% end %>
     </div>
   </div>
 </div>
