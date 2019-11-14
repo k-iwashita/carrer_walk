@@ -1,5 +1,6 @@
 # はじめて実行される方へ
-careerWalkをgit cloneし, careerWalkディレクトリに移動したら以下コマンドを打ってください, Dockerのビルドやデータベースの作成をします.
+careerWalkをgit cloneし, careerWalkディレクトリに移動したら以下コマンドを打ってください. 
+Dockerのビルドやデータベースの作成をします.
 
 #### MacOS
 ```
@@ -16,4 +17,5 @@ careerWalkをgit cloneし, careerWalkディレクトリに移動したら以下�
 ~$ sudo docker-compose up
 ```
 [localhost](http://127.0.0.1)にアクセスするとcareerWalkが表示されるはずです.
-もしエラーが出たりうまくできない場合, エラー文とOSを教えてください. 尚DockerについてDocBaseで詳しくまとめているので見ておいてください.
+もしエラーが出たりうまくできない場合, エラー文とOSを教えてください. 
+尚DockerについてDocBaseで詳しくまとめているので見ておいてください.
