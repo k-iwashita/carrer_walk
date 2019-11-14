@@ -1,24 +1,19 @@
-# README
+# はじめて実行される方へ
+careerWalkをgit cloneし, careerWalkディレクトリに移動したら以下コマンドを打ってください, Dockerのビルドやデータベースの作成をします.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### MacOS
+```
+~$ sh init.sh
+```
+#### Linux(Windows10にLinuxを入れてる人も)
+```
+~$ sudo sh init.sh
+~$ sudo chown -R $USER:$USER .
+```
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ビルドが問題なく終わったら下記コマンドでコンテナを立ち上げてください.
+```
+~$ sudo docker-compose up
+```
+[localhost](http://127.0.0.1)にアクセスするとcareerWalkが表示されるはずです.
+もしエラーが出たりうまくできない場合, エラー文とOSを教えてください. 尚DockerについてDocBaseで詳しくまとめているので見ておいてください.
