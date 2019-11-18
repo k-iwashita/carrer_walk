@@ -83,25 +83,6 @@ ActiveRecord::Schema.define(version: 2019_11_06_053150) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "lesson_categories", force: :cascade do |t|
-    t.bigint "lesson_id"
-    t.bigint "category_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_lesson_categories_on_category_id"
-    t.index ["lesson_id"], name: "index_lesson_categories_on_lesson_id"
-  end
-
-  create_table "lessons", force: :cascade do |t|
-    t.string "name"
-    t.string "detail", limit: 10000
-    t.datetime "publish_start_at"
-    t.datetime "publish_end_at"
-    t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "upload_files", force: :cascade do |t|
     t.string "default_file_name", limit: 200
     t.string "managed_file_name", limit: 200
@@ -130,15 +111,6 @@ ActiveRecord::Schema.define(version: 2019_11_06_053150) do
     t.index ["user_id"], name: "index_user_jobs_on_user_id"
   end
 
-  create_table "user_lessons", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "lesson_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["lesson_id"], name: "index_user_lessons_on_lesson_id"
-    t.index ["user_id"], name: "index_user_lessons_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -162,12 +134,8 @@ ActiveRecord::Schema.define(version: 2019_11_06_053150) do
   add_foreign_key "event_categories", "events"
   add_foreign_key "job_categories", "categories"
   add_foreign_key "job_categories", "jobs"
-  add_foreign_key "lesson_categories", "categories"
-  add_foreign_key "lesson_categories", "lessons"
   add_foreign_key "user_events", "events"
   add_foreign_key "user_events", "users"
   add_foreign_key "user_jobs", "jobs"
   add_foreign_key "user_jobs", "users"
-  add_foreign_key "user_lessons", "lessons"
-  add_foreign_key "user_lessons", "users"
 end
