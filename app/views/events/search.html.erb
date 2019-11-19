@@ -1,6 +1,13 @@
 <div class="event_wrapper">
   <div class="container">
     <div class="main_content">
+      <div class="search_result">
+        <% if @events.present? %>
+          <p>検索結果が<%= @events.total_count %>件表示されています。</p>
+        <% else %>
+          <p>検索結果が見つかりませんでした。</p>
+        <% end %>
+      </div>
       <div class="events">
         <% last_date = nil  %>
         <% @events.each do |event| %>
@@ -49,5 +56,5 @@
     </div>
   </div>
   <%= paginate @events  %>
-
+ 
 
