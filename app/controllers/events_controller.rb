@@ -2,7 +2,8 @@ class EventsController < ApplicationController
    before_action :authenticate_user! ,only: [:new, :create]
 
   def index
-    @events = Event.where('started_at > ?', Date.today).order(:started_at).page(params[:page]).per(20)
+    @q = Event.where('started_at > ?', Date.today).ransack(params[:q])
+    @events = @q.result.order(:started_at).page(params[:page]).per(20)
   end
 
   def show
@@ -29,6 +30,11 @@ class EventsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def search
+    @q = Event.where('started_at > ?', Date.today).ransack(params[:q])
+    @events = @q.result.order(:started_at).page(params[:page]).per(20)
   end
 
   private
