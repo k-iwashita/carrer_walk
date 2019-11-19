@@ -20,6 +20,7 @@ connpass_events.each do |e|
   event.started_at = e["started_at"]
   event.ended_at = e["ended_at"]
   event.site = "connpass"
+  event.status = 1
   event.save
 end
 
@@ -40,6 +41,7 @@ doorkeeper_result.each do |i|
   event.started_at = e["starts_at"]
   event.ended_at = e["ends_at"]
   event.site = "doorkeeper"
+  event.status = 1
   event.save
 end
 

@@ -74,7 +74,7 @@
         <%= link_to "ポートフォリオを見る", "#{@user.id}/portfolio", class: "user_portfolio_btn" %>
         <div class="user_menu">
           <% if @user == current_user %>
-            <a href="#" class="user_edit_btn">プロフィールを編集する</a>
+            <%= link_to "プロフィールを編集する", profile_edit_path, class: "user_edit_btn" %>
           <% end %>
         </div>
       </div>

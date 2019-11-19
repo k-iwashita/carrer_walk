@@ -2,8 +2,12 @@ class EventsController < ApplicationController
    before_action :authenticate_user! ,only: [:new, :create]
 
   def index
+<<<<<<< HEAD
     @q = Event.where('started_at > ?', Date.today).ransack(params[:q])
     @events = @q.result.order(:started_at).page(params[:page]).per(20)
+=======
+    @events = Event.published.where('started_at > ?', Date.today).order(:started_at).page(params[:page]).per(20)
+>>>>>>> 31090f1c1ce07aee7203ca6dcabae47678113597
   end
 
   def show
