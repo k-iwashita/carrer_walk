@@ -1,6 +1,12 @@
 <div class="event_wrapper">
   <div class="container">
     <div class="main_content">
+      <div class="searchbox">
+        <%= search_form_for(@q, url:search_path) do |f| %>
+          <%= f.text_field :title_cont ,placeholder: 'イベント名を入力...' %>
+          <%= f.submit "検索" , class: 'search-btn'%>
+        <% end %>
+      </div>
       <div class="events">
         <% last_date = nil  %>
         <% @events.each do |event| %>
