@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   root 'events#index'
-  
+
   get 'search', to: 'events#search'
 
   get 'users/:id/portfolio', to: 'users#portfolio'

@@ -32,6 +32,8 @@ class EventsController < ApplicationController
     end
   end
 
+
+
   def search
     @q = Event.where('started_at > ?', Date.today).ransack(params[:q])
     @events = @q.result.order(:started_at).page(params[:page]).per(20)
@@ -39,6 +41,6 @@ class EventsController < ApplicationController
 
   private
     def event_params
-      params.require(:event).permit(:title, :detail, :publish_start_at, :publish_start_end)
+      params.require(:event).permit(:title, :location,:description, :started_at, :ended_at)
     end
 end
