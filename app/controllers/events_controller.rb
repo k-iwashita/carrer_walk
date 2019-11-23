@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 
   def index
     @q = Event.where('started_at > ?', Date.today).ransack(params[:q])
-    @events = @q.result.order(:started_at).page(params[:page]).per(20)
+    @events = @q.result.published.order(:started_at).page(params[:page]).per(20)
   end
 
   def show
