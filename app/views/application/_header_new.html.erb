@@ -13,9 +13,7 @@
       <% if current_user  %>
         <%= link_to user_path(current_user) do %>
         <div class="user-info">
-          <% if current_user.image %>
-            <%= image_tag current_user.image, width: "48px", height: "48px"  %>
-          <% end %>
+          <img src=<%= current_user.image %> class="current_user_image" >
           <p><%= current_user.name %></p>
         </div>
         <% end %>

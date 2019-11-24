@@ -25,6 +25,10 @@ class User < ApplicationRecord
       end
   end
 
+   mount_uploader :image, ImageUploader
+
+
+
   private
 
   def self.dummy_email(auth)

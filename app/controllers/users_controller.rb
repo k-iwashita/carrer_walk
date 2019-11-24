@@ -10,4 +10,5 @@ class UsersController < ApplicationController
     @events = Event.where(id: @user.events)
   end
 
+
 end
