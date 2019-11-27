@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
    before_action :authenticate_user! ,only: [:new, :create]
 
+
   def index
     @q = Event.where('started_at > ?', Date.today).ransack(params[:q])
     @events = @q.result.published.order(:started_at).page(params[:page]).per(20)
@@ -25,7 +26,9 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+  
     if @event.save
+
       redirect_to @event
     else
       render :new
@@ -39,8 +42,13 @@ class EventsController < ApplicationController
     @events = @q.result.order(:started_at).page(params[:page]).per(20)
   end
 
+
+
+
   private
     def event_params
       params.require(:event).permit(:title, :location,:description, :started_at, :ended_at)
     end
+
+
 end
