@@ -6,6 +6,10 @@ class EventsController < ApplicationController
     @q = Event.where('started_at > ?', Date.today).ransack(params[:q])
     @events = @q.result.published.order(:started_at).page(params[:page]).per(20)
   end
+  
+  def confirm
+    @events = @q.result.draft.order(:started_at).page(params[:page]).per(20)
+  end
 
   def show
     @event = Event.find(params[:id])
@@ -18,6 +22,9 @@ class EventsController < ApplicationController
       marker.lng event.lon
       marker.infowindow event.location
     end
+
+
+
   end
 
   def new
@@ -25,10 +32,10 @@ class EventsController < ApplicationController
   end
 
   def create
+    @event = Event.new(status: :"published")
     @event = Event.new(event_params)
-  
-    if @event.save
 
+    if @event.save
       redirect_to @event
     else
       render :new
@@ -42,12 +49,15 @@ class EventsController < ApplicationController
     @events = @q.result.order(:started_at).page(params[:page]).per(20)
   end
 
+  def confirm
+    @events = Event.draft.order("created_at DESC")
+end
 
 
 
   private
     def event_params
-      params.require(:event).permit(:title, :location,:description, :started_at, :ended_at)
+      params.require(:event).permit(:title, :location,:description, :started_at, :ended_at,:status)
     end
 
 
