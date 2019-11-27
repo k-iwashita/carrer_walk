@@ -1,4 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+
   def profile_edit
 
   end
@@ -12,12 +13,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+
   private
 
-    def account_update_params
-      devise_parameter_sanitizer.permit(:account_update, keys: [:name, :profile])
+    def configure_account_update_params
+      devise_parameter_sanitizer.permit(:account_update, keys: [:name,:email,:image])
     end
-
-
 
 end

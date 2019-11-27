@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   get 'users/:id/portfolio', to: 'users#portfolio'
 
+
   resources :events
   resources :users
   resources :user_events, only: [:create, :destroy]
