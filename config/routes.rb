@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
 
   resources :events do
+    patch :toggle_status
     collection do
         get 'confirm'
       end

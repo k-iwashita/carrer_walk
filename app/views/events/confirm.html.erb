@@ -39,8 +39,16 @@
           <p><%= event.owner %></p>
         </div>
       </div>
+      <%=link_to "編集", edit_event_path(event)%>
+      <%= link_to "削除", event_path(event), method: :delete %>
+      <p>
+
+  <%= link_to '公開', event_toggle_status_path(event), method: :patch %>
+</p>
     </div>
+
   <% end  %>
+
 </div>
 <div class="side_content">
 </div>

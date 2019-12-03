@@ -12,7 +12,16 @@ class Event < ApplicationRecord
  has_many :upload_files, dependent: :destroy
 
  enum status: { draft: 0, published: 1 }
+ validates :status, inclusion: { in: Event.statuses.keys }
 
+
+ def toggle_status!
+     if draft?
+       published!
+     else
+       draft!
+     end
+   end
 
 
  # geocoded_by :address

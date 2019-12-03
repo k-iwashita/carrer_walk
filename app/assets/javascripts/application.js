@@ -33,3 +33,7 @@ $(document).ready(function(){
   $('#calendar').fullCalendar({
   });
 });
+
+$(function(){
+  setTimeout("$('.alert').fadeOut('slow')", 1000)
+})
