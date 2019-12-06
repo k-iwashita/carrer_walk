@@ -71,6 +71,8 @@ class EventsController < ApplicationController
     redirect_to @event, notice: '公開しました'
   end
 
+  
+
   def destroy
     @event = Event.find(params[:id])
     @event.delete

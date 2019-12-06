@@ -26,6 +26,9 @@ class User < ApplicationRecord
   end
 
    mount_uploader :image, ImageUploader
+   has_many :user_rooms
+   has_many :rooms, through: :user_rooms
+   has_many :posts
 
 
 

@@ -1,8 +1,8 @@
-<h1>Chat room</h1>
-<div id='messages'>
-  <%= render @messages %>
+
+<p><%= "ルーム名：#{@room.name}" %></p>
+
+<input type="text" data-behavior="room_speaker" data-user="<%= current_user.id %>" data-room="<%= @room.id %>">
+
+<div id="posts">
+  <%= render "post", collection: @posts %>
 </div>
-<form>
-  <label>Say something:</label><br>
-  <input type="text" data-behavior="room_speaker">
-</form>

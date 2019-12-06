@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   end
   resources :users
   resources :user_events, only: [:create, :destroy]
-  get 'rooms/show'
+
+  resources :rooms
   mount ActionCable.server => '/cable'
 end

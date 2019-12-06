@@ -368,6 +368,7 @@ DEPENDENCIES
   devise
   devise-i18n
   enum_help
+  execjs
   factory_bot_rails
   font-awesome-sass
   fullcalendar-rails

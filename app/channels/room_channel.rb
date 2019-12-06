@@ -7,8 +7,11 @@ class RoomChannel < ApplicationCable::Channel
     # Any cleanup needed when channel is unsubscribed
   end
 
-  def speak(data)
+  def speak(message)
     #ActionCable.server.broadcast 'room_channel', message: data['message']
-     Message.create! content: data['message']
+   post = Post.new(message: message['message'][0], user_id: message['message'][1].to_i, room_id: message['message'][2].to_i)
+   post.save
+   ActionCable.server.broadcast 'room_channel', message: message['message'][0] # フロントへ返します
+
   end
 end
