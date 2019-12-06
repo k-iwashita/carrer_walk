@@ -15,7 +15,12 @@ Rails.application.routes.draw do
   get 'users/:id/portfolio', to: 'users#portfolio'
 
 
-  resources :events
+  resources :events do
+    patch :toggle_status
+    collection do
+        get 'confirm'
+      end
+  end
   resources :users
   resources :user_events, only: [:create, :destroy]
   get 'rooms/show'
