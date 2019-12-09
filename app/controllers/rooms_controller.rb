@@ -1,10 +1,18 @@
 class RoomsController < ApplicationController
     before_action :authenticate_user!
+  def index
+    @rooms = Room.all
+  end
 
 
   def show
     @room = Room.find(params[:id])
     @posts = @room.posts
+  end
+
+  def detail
+    @room =Room.find(params[:id])
+
   end
 
   def new

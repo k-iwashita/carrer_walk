@@ -24,6 +24,11 @@ Rails.application.routes.draw do
   resources :users
   resources :user_events, only: [:create, :destroy]
 
-  resources :rooms
+  resources :rooms do
+    member do
+      get 'detail'
+    end
+  end
+
   mount ActionCable.server => '/cable'
 end
