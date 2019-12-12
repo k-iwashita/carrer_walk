@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_06_130150) do
+ActiveRecord::Schema.define(version: 2019_12_12_072337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,14 @@ ActiveRecord::Schema.define(version: 2019_12_06_130150) do
     t.text "description"
     t.integer "status", default: 0, null: false
     t.index ["upload_file_id"], name: "index_events_on_upload_file_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id"
+    t.integer "owner"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "internships", id: :serial, force: :cascade do |t|
@@ -125,6 +133,16 @@ ActiveRecord::Schema.define(version: 2019_12_06_130150) do
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_user_events_on_event_id"
     t.index ["user_id"], name: "index_user_events_on_user_id"
+  end
+
+  create_table "user_groups", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_user_groups_on_group_id"
+    t.index ["user_id", "group_id"], name: "index_user_groups_on_user_id_and_group_id", unique: true
+    t.index ["user_id"], name: "index_user_groups_on_user_id"
   end
 
   create_table "user_jobs", force: :cascade do |t|

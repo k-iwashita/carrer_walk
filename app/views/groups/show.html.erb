@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="ja" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Career Walk</title>
-    <link rel="stylesheet" href="scss_set/style.css">
 
-    <!-- Material-Iconsを使用しています。 -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  </head>
-
-  <body>
-    <header></header>
     <!-- ここから使用 -->
     <div class="community_container">
       <div class="community_headerImage_wrapper">
@@ -195,8 +183,29 @@
         <div class="community_main_right">
           <div class="community_main_right_inner">
             <button class="community_main_enterButton" type="button" name="button">参加する</button>
-            <%= button_to "トークルームに参加する" ,room_path(@room),:method => :get %>
+
+
+            <%= button_to "ルーム作成", new_room_path, :method => :get  %>
+            <%= link_to "ルーム一覧",rooms_path %>
+
+
+            <% if current_user.groups_joining?(@group)%>
+            <%= form_for(current_user.user_groups.find_by(group_id: @group.id),
+             html: { method: :delete }) do |f| %>
+              <%= f.submit "退出",class: "btn" %>
+              <% end %>
+            <% else %>
+              <%=form_for(current_user.user_groups.build)do |f|%>
+                <div><%= hidden_field_tag :group_id, @group.id%></div>
+
+                <%=f.submit "参加する",class: "btn btn-primary"%>
+              <% end %>
+            <% end %>
+
+
+
             <div class="community_members">
+
               <h3>メンバー</h3>
               <div class="community_members_images">
                 <div class="community_members_images_line">
@@ -242,6 +251,7 @@
               </div>
             </div>
 
+
             <div class="community_main_links">
               <h3>リンク</h3>
               <div class="community_links_bg">
@@ -259,6 +269,3 @@
     </div>
 
     <!-- ここまで使用 -->
-    <footer></footer>
-  </body>
-</html>

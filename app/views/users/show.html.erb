@@ -63,8 +63,9 @@
       </div>
 
 
-  <%= button_to "ルーム作成", new_room_path, :class => "button", :method => :get  %>
-  <%= link_to "ルーム一覧",rooms_path %>
+
+  <%= button_to "コミュニティ一覧",groups_path,:method => :get %>
+  <%= button_to "コミュニティを作成する", new_group_path %>
     </div>
     <div class="side_content">
       <div class="user_profile">
