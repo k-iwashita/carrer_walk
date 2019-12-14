@@ -70,7 +70,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
   gem 'spring-commands-rspec'
-
+  gem 'capybara', '>= 2.15'
+  gem 'selenium-webdriver'
 end
 
 group :development do
