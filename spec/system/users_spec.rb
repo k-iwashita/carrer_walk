@@ -84,7 +84,6 @@ describe 'ユーザー機能', type: :system do
       fill_in 'Eメール', with: user_a.email
       fill_in 'パスワード', with: user_a.password
       click_button 'Log in'
-      @user = user_a
       visit profile_edit_path
       fill_in '名前', with: user_name
       click_button 'Update'
