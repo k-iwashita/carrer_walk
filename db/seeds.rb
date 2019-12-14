@@ -14,7 +14,10 @@ end
   title = "Event#{n+1}"
   location = "Osaka#{n+1}"
   started_at = Time.now
+  description = "大阪にてRuby第#{n+1}回目の講義です"
   Event.create(title: title,
                location: location,
-               started_at: started_at)
+               started_at: started_at,
+               description: description,
+               ended_at: Time.now)
 end
