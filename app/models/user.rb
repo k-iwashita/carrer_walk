@@ -29,19 +29,23 @@ class User < ApplicationRecord
    has_many :user_rooms
    has_many :rooms, through: :user_rooms
    has_many :posts
+
    has_many :user_groups
-   has_many :groups, through: :user_groups
+   has_many :groups,through: :user_groups
 
 
-  def groups_join(group)
+
+  def groupsJoin(group)
     groups << group
+    
   end
 
-  def groups_unjoin(group)
+  def groupsUnjoin(group)
     user_groups.find_by(group_id: group.id).destroy
+
   end
 
-  def groups_joining?(group)
+  def groupJoining?(group)
     groups.include?(group)
   end
 

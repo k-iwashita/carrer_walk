@@ -2,14 +2,14 @@
     <!-- ここから使用 -->
     <div class="community_container">
       <div class="community_headerImage_wrapper">
-        <img class="community_headerImage" src="chaos.jpg" alt="header image">
+
       </div>
 
       <div class="community_profile_wrapper">
         <div class="community_profile">
           <img class="community_profile_image" src="blueSmoke.jpg" alt="">
           <div class="community_profile_text">
-            <h1>MOKUMOKU</h1>
+            <h1><%= @group.name %></h1>
             <div class="community_profile_tags">
               <a href="#"><i class="material-icons">local_offer</i>Node.js</a>
               <a href="#"><i class="material-icons">local_offer</i>React</a>
@@ -24,9 +24,9 @@
         <div class="community_main_left">
 
           <div class="community_description">
-            <h2>コミュニティの悦明</h2>
+            <h2>コミュニティの説明</h2>
             <div class="community_description_text">
-              <p>恵比寿地区で開催するJavaScript講座のグループです。<br><br>
+              <p><%= @group.description %><br><br>
                 検討中の講座リスト：<br><br>
                 Javascript基礎<br>
                 Node.js/Express基礎<br>
@@ -182,31 +182,35 @@
 
         <div class="community_main_right">
           <div class="community_main_right_inner">
-            <button class="community_main_enterButton" type="button" name="button">参加する</button>
+            <button class="community_main_enterButton" type="button" name="button">
+              <% if current_user.groupJoining?(@group)%>
+              <%= form_for(current_user.user_groups.find_by(group_id: @group.id),
+               html: { method: :delete }) do |f| %>
 
+                <%= f.submit "退出",class:"community_main_enterButton"  %>
+              <% end %>
+              <% else %>
+                <%=form_for(current_user.user_groups.build)do |f|%>
+                  <div><%= hidden_field_tag :group_id, @group.id %></div>
 
+                  <%=f.submit "参加する", class: "community_main_enterButton" %>
+                <% end %>
+              <% end %>
+             </button>
             <%= button_to "ルーム作成", new_room_path, :method => :get  %>
-            <%= link_to "ルーム一覧",rooms_path %>
+            <%= button_to "ルーム一覧", rooms_path, :method => :get %>
 
-
-            <% if current_user.groups_joining?(@group)%>
-            <%= form_for(current_user.user_groups.find_by(group_id: @group.id),
-             html: { method: :delete }) do |f| %>
-              <%= f.submit "退出",class: "btn" %>
-              <% end %>
-            <% else %>
-              <%=form_for(current_user.user_groups.build)do |f|%>
-                <div><%= hidden_field_tag :group_id, @group.id%></div>
-
-                <%=f.submit "参加する",class: "btn btn-primary"%>
-              <% end %>
-            <% end %>
-
-
+            <%=button_to "コミュニティを編集する",edit_group_path,:method => :get %>
+            <%= button_to "イベント作成", new_event_path, :method => :get  %>
+              <%= button_to "コミュニティ一覧",groups_path,:method => :get %>
 
             <div class="community_members">
 
               <h3>メンバー</h3>
+
+                
+
+
               <div class="community_members_images">
                 <div class="community_members_images_line">
                   <a href="#">
