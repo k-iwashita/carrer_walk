@@ -8,4 +8,4 @@ CMD echo date  >> /etc/nginx/log.txt
 CMD echo   >> /etc/nginx/log.txt
 CMD echo   >> /etc/nginx/log.txt
 CMD echo   >> /etc/nginx/log.txt
-CMD /usr/sbin/nginx -g 'daemon off;' -c /etc/nginx/nginx.conf >> /etc/nginx/log.txt
+CMD /usr/sbin/nginx -g 'daemon off;' -c /etc/nginx/nginx.conf
