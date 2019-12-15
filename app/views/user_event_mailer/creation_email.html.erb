@@ -9,7 +9,7 @@
 
     <ul>
       <li>イベント名：<%= @event.title %></li>
-      <li>イベント日時：<%= @event.started_at %>〜<%= @event.ended_at %></li>
+      <li>イベント日時：<%= @event.started_at.to_s(:datetime_jp) %>〜<%= @event.ended_at.to_s(:datetime_jp) %></li>
       <li>イベント開催地：<%= @event.location %></li>
       <li>イベント詳細：<%= @event.description %></li>
     </ul>
