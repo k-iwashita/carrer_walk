@@ -4,6 +4,7 @@ class UserEventsController < ApplicationController
     user = current_user
     @event = Event.find(params[:event_id])
     user.event_join(@event)
+    UserEventMailer.creation_email(user, @event).deliver_now
     redirect_to event_path(@event)
   end
 
