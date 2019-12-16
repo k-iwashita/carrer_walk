@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :group do
 
-    name {:"テスト"}
-    description {:"あああああああ"}
-    
+    name{"test_user" }
+    description{"test"}
+
 
   end
 end

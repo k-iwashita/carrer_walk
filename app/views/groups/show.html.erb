@@ -187,11 +187,13 @@
               <%= form_for(current_user.user_groups.find_by(group_id: @group.id),
                html: { method: :delete }) do |f| %>
 
+
                 <%= f.submit "退出",class:"community_main_enterButton"  %>
               <% end %>
               <% else %>
                 <%=form_for(current_user.user_groups.build)do |f|%>
                   <div><%= hidden_field_tag :group_id, @group.id %></div>
+
 
                   <%=f.submit "参加する", class: "community_main_enterButton" %>
                 <% end %>
@@ -207,9 +209,7 @@
             <div class="community_members">
 
               <h3>メンバー</h3>
-
-                
-
+              <%= current_user.groups.count %>
 
               <div class="community_members_images">
                 <div class="community_members_images_line">

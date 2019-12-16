@@ -4,8 +4,8 @@ class UserGroupsController < ApplicationController
   def create
     user = current_user
     group = Group.find(params[:group_id])
-    current_user.groupsJoin(group)
 
+    current_user.groupsJoin(group)
     flash[:success] = "参加しました"
     redirect_to groups_path
   end

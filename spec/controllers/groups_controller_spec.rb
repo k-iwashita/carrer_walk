@@ -21,21 +21,27 @@ RSpec.describe GroupsController, type: :controller do
   end
 
   describe "GET #new" do
-    it "returns http success" do
+    it "正常に動作していること" do
       get :new
       expect(response).to have_http_status(:success)
+    end
+
+    it 'newの画面にrenderされること'do
+      group = FactoryBot.create(:group)
+      get :new ,params: {id: group.id}
+      expect(response).to render_template :new
     end
 
   end
 
   describe 'GET #show'do
-    it 'assign request group'do
+    it '適切なgroupを呼び出すこと'do
       group = FactoryBot.create(:group)
       get :show, params: { id: group.id }
       expect(assigns(:group)).to eq group
     end
 
-    it 'render show template'do
+    it 'showの画面にrenderされること'do
       group = FactoryBot.create(:group)
       get :show, params: {id: group.id}
       expect(response).to render_template :show
@@ -47,13 +53,13 @@ RSpec.describe GroupsController, type: :controller do
   describe 'POST #create'do
   let(:group_attribues){FactoryBot.attributes_for(:group)}
 
-    it 'save new group'do
+    it 'new groupが保存されること'do
       expect do
         post :create, params: {group: group_attribues}
       end.to change(Group, :count).by(1)
     end
 
-    it 'redirects the :create' do
+    it 'create がredirectされること' do
       post :create, params: {group: group_attribues}
 
       expect(response).to redirect_to groups_path
@@ -61,13 +67,13 @@ RSpec.describe GroupsController, type: :controller do
   end
 
   describe 'PATCH #update'do
-    it '＠groupのリクエストがあるかどうか'do
+    it 'groupのリクエストがあること'do
       group = FactoryBot.create(:group)
       patch :update, params: {id: group.id, group: FactoryBot.attributes_for(:group)}
       expect(assigns(:group)).to eq group
     end
 
-    it '@groupの中身を変更する'do
+    it 'groupの中身を変更すること'do
       group = FactoryBot.create(:group)
       patch :update, params: {id: group.id, group: FactoryBot.attributes_for(:group, name: '七七七七',description: 'テスト')}
       group.reload
@@ -75,7 +81,7 @@ RSpec.describe GroupsController, type: :controller do
       expect(group.description).to eq("テスト")
     end
 
-    it 'リダイレクトがされるかどうか'do
+    it 'リダイレクトがされること'do
       group = FactoryBot.create(:group)
       patch :update, params: {id: group.id, group: FactoryBot.attributes_for(:group)}
       expect(response).to redirect_to group_path

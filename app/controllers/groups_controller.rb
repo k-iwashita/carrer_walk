@@ -5,7 +5,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @user_joins = UserGroup.includes(:user)
+
   end
 
 
@@ -25,11 +25,6 @@ class GroupsController < ApplicationController
     end
   end
 
-  def groupsJoin(user)
-    @group= Group.find(params[:id])
-    @group.user_id = current_user.id
-    @group.save
-  end
 
   def edit
     @group = Group.find(params[:id])
@@ -44,9 +39,6 @@ class GroupsController < ApplicationController
       render 'group'
     end
   end
-
-
-
 
 
   def destroy
