@@ -37,7 +37,7 @@ class User < ApplicationRecord
 
   def groupsJoin(group)
     groups << group
-  
+
   end
 
   def groupsUnjoin(group)
