@@ -1,12 +1,12 @@
 class GroupsController < ApplicationController
   def index
     @groups = Group.all
+
   end
 
   def show
     @group = Group.find(params[:id])
-  
-
+    @users = @group.users
   end
 
 
@@ -17,12 +17,12 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-
-    #グループを作成した人が管理者になる
+    @group.owner=current_user.id#グループを作成した人が管理者になる
     if @group.save
       redirect_to groups_path,notice: "コミュニティを作成しました"
     else
-      render.new
+      flash[:danger]= "作成できませんでした"
+      render :new
     end
   end
 

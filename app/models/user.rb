@@ -29,9 +29,21 @@ class User < ApplicationRecord
    has_many :user_rooms
    has_many :rooms, through: :user_rooms
    has_many :posts
-
    has_many :user_groups
    has_many :groups,through: :user_groups
+
+  # イベントに参加する
+  def event_join(event)
+    events << event
+  end
+   # イベントの参加をキャンセルする
+  def event_unjoin(event)
+    user_events.find_by(event_id: event.id).destroy
+  end
+  # ユーザーがイベントに参加予定か確認する
+  def event_will_user_join?(event)
+    events.include?(event)
+  end
 
 
 

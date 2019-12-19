@@ -12,6 +12,7 @@ class EventsController < ApplicationController
 
 
   def show
+    @user = current_user
     @event = Event.find(params[:id])
     @participants = User.where(id: @event.users)
     @user_event = UserEvent.find_by(event_id: @event.id, user_id: current_user.id) if current_user
@@ -34,6 +35,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(status: :"published")
     @event = Event.new(event_params)
+    @event.adminUser = current_user.id
 
     if @event.save
       flash[:success] ="作成しました"

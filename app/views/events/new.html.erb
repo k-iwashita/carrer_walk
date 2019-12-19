@@ -20,11 +20,15 @@
         <%= form.text_field :location, placeholder: "会場", class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= form.label :started_at %>
-        <%= form.datetime_select :started_at, {} %>
+        <%= form.label :started_at,"開始時間" %>
+        <%= form.datetime_select :started_at, {},:default => Time.now,
+                :order => [:day, :month, :year,:hour,:minutes],
+                :start_year => Time.now.year,
+                :end_year => Time.now.year + 3,
+                :id => 'started_at' %>
       </div>
       <div class="form-group">
-        <%= form.label :ended_at %>
+        <%= form.label :ended_at,"終了時間" %>
         <%= form.datetime_select :ended_at, {} %>
       </div>
       <div class="form-group">

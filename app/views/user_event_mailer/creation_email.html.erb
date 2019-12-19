@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1><%= @user.name %>様、以下のイベントに参加申込を承りましました。</h1>
+
+    <ul>
+      <li>イベント名：<%= @event.title %></li>
+      <li>イベント日時：<%= @event.started_at.to_s(:datetime_jp) %>〜<%= @event.ended_at.to_s(:datetime_jp) %></li>
+      <li>イベント開催地：<%= @event.location %></li>
+      <li>イベント詳細：<%= @event.description %></li>
+    </ul>
+
+
+    <p>当日もお待ちしております。</p>
+  </body>
+</html>

@@ -28,16 +28,13 @@
         <%= form.label :description %>
         <%= form.text_area :description, placeholder: "詳細", class: "form-control" %>
       </div>
-<<<<<<< HEAD
-      <%= form.submit "編集する", class: "btn btn-info" %>
-=======
+
 
       <select name="event[status]" id="event_status">
         <option selected="selected" value="draft">下書きとして保存する</option>
         <option value="published">公開する</option>
       </select>
-      <%= form.submit "イベント作成", class: "btn btn-info" %>
->>>>>>> Add_modal
+      <%= form.submit "編集する", class: "btn btn-info" %>
     <% end %>
 
 

@@ -48,24 +48,6 @@ RSpec.describe GroupsController, type: :controller do
     end
   end
 
-
-
-  describe 'POST #create'do
-  let(:group_attribues){FactoryBot.attributes_for(:group)}
-
-    it 'new groupが保存されること'do
-      expect do
-        post :create, params: {group: group_attribues}
-      end.to change(Group, :count).by(1)
-    end
-
-    it 'create がredirectされること' do
-      post :create, params: {group: group_attribues}
-
-      expect(response).to redirect_to groups_path
-    end
-  end
-
   describe 'PATCH #update'do
     it 'groupのリクエストがあること'do
       group = FactoryBot.create(:group)

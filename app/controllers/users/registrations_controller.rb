@@ -9,7 +9,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if current_user.save
       redirect_to user_path(current_user), notice: "プロフィールを更新しました";
     else
-      render 'profile_edit';
+      render 'profile_edit'
     end
   end
 
