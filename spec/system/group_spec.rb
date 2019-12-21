@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'イベント作成', type: :system do
+describe 'コミュニティの作成', type: :system do
   let(:user) { FactoryBot.create(:user, name: "user_a", email: "user@test.com") }
 
   before do

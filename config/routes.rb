@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   resources :users
   resources :user_events, only: [:create, :destroy]
 
-  resources :rooms
+  #resources :rooms
 
   resources :groups
   resources :user_groups,only: [:create, :destroy]

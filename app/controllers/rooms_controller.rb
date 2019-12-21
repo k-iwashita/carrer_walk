@@ -8,10 +8,7 @@ class RoomsController < ApplicationController
    @room = Room.find(params[:id])
    @posts = @room.posts
  end
-
  
-
-
  def new
    @room = Room.new
  end

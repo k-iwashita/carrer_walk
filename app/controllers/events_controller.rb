@@ -7,6 +7,7 @@ class EventsController < ApplicationController
   def index
     @q = Event.where('started_at > ?', Date.today).ransack(params[:q])
     @events = @q.result.published.order(:started_at).page(params[:page]).per(20)
+
   end
 
 
@@ -41,6 +42,7 @@ class EventsController < ApplicationController
       flash[:success] ="作成しました"
       redirect_to @event
     else
+      flash[:info] = "作成できませんでした"
       render :new
     end
   end
@@ -62,13 +64,14 @@ class EventsController < ApplicationController
   def search
     @q = Event.where('started_at > ?', Date.today).ransack(params[:q])
     @events = @q.result.order(:started_at).page(params[:page]).per(20)
+
   end
 
-  def confirm
+  def confirm#下書きアクションのメソッド
     @events = Event.draft.order("created_at DESC")
   end
 
-  def toggle_status
+  def toggle_status#下書きdraftか、公開publishedを判断するメソッド、eventモデルに書いてあります
     @event.toggle_status!
     redirect_to @event, notice: '公開しました'
   end
