@@ -7,7 +7,7 @@
         <div class="communityEdit_profile">
           <img class="communityEdit_profile_image" src="blueSmoke.jpg" alt="">　
           <div class="communityEdit_profile_text">
-            <h1>MOKUMOKU</h1>
+            <h1><%=@group.name%></h1>
             <div class="communityEdit_profile_tags">
               <a href="#"><i class="material-icons">local_offer</i>Node.js<button type="button" name="button"><i class="material-icons">clear</i></button></a>
               <a href="#"><i class="material-icons">local_offer</i>React<button type="button" name="button"><i class="material-icons">clear</i></button></a>
@@ -25,7 +25,7 @@
         <%= form_with model: @group ,local: true do |form| %>
 
           <div class="form-group">
-          
+
             <%= form.text_area :description,rows: 8,cols: 80, placeholder: "詳細", class: "form-control" %>
           </div>
           <button <%=form.submit "更新" %>更新</button>
