@@ -91,3 +91,112 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+<div class="eventDetails_wrapper">
+  <div class="eventDetails_left">
+    <div class="eventDetails_title">
+      <div class="eventDetails_title_date">
+        <% event_date =  @event.started_at.to_date  %>
+        <p class="month"><%= l(event_date, format: :just_month) %></p>
+        <p class="day"><%= l(event_date, format: :just_date) %></p>
+      </div>
+      <h2 class="event_show_title">
+        <%= @event.title %>
+      </h2>
+      <% if @event.image %>
+        <div class="thumbnail" style="background-image: url(<%= @event.image %>)"></div>
+      <% elsif @event.site == "doorkeeper" %>
+        <div class="thumbnail">
+          <%= image_tag("doorkeeper.png", style: "margin: 104px auto", width: "360px") %>
+        </div>
+      <% elsif @event.site == "connpass" %>
+        <div class="thumbnail">
+          <%= image_tag("connpass.png", style: "margin: 71px auto") %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="eventDetails_detail">
+      <h2>イベント詳細</h2>
+      <div class="eventDetails_detail_text">
+        <% if @event.site %>
+          <div class="event_detail_btn">
+            <%= link_to "詳細を確認する", @event.url %>
+          </div>
+        <% else %>
+          <%= markdown(@event.description).html_safe %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="eventDetails_document">
+      <h2>イベント資料</h2>
+      <div class="eventDetails_links">
+        <div class="eventDetails_links_item">
+          <a href="#"><p><i class="material-icons">folder</i>Rails_tutorial.zip</p></a>
+        </div>
+        <div class="eventDetails_links_item">
+          <a href="#"><p><i class="material-icons">folder</i>Rails_devise.zip</p></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="eventDetails_right">
+    <div class="eventDetails_location">
+      <h3>会場</h3>
+      <h3>GVH OSAKA</h3>
+      <p>大阪府大阪市北区大深町3</p>
+      <div class="eventDetails_location_map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6559.888663968141!2d135.494366!3d34.706584!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xffe76e4703a925f3!2sGVH%20Osaka!5e0!3m2!1sja!2sjp!4v1576412630907!5m2!1sja!2sjp" width="280" height="280" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+      </div>
+    </div>
+
+    <div class="eventDetails_application">
+      <div class="eventDetails_application_state">
+        <p>開催前</p>
+      </div>
+      <p><%= @event.started_at.to_s(:date) %></p>
+      <p><span><%= @event.started_at.to_s(:time) %></span>～<%= @event.ended_at.to_s(:time) %></p>
+      <% if @user_event %>
+          <%= button_to "イベントの参加を取り消す", {controller: 'user_events', action: 'destroy'},
+                                                { method: :delete, params: { event_id: @event.id } } %>
+      <% else %>
+　　　　　　<%= button_to "イベントに参加する", {controller: 'user_events', action: 'create'},
+                                           { method: :post, params: { event_id: @event.id } } %>
+      <% end %>
+    </div>
+
+    <div class="eventDetails_owner">
+      <h2>運営</h2>
+      <div class="eventDetails_owner_main">
+        <p>株式会社Gude</p>
+        <img src="logo.png" alt="">
+        <a href="#">https://gude.jp</a>
+      </div>
+    </div>
+
+    <div class="eventDetails_participant">
+      <h2>参加者</h2>
+      <div class="eventDetails_participant_itemWrapper">
+        <div class="eventDetails_participant_item">
+          <img src="logo.png" alt="">
+          <p>usernameusername</p>
+        </div>
+        <div class="eventDetails_participant_item">
+          <img src="logo.png" alt="">
+          <p>usernameusername</p>
+        </div>
+        <div class="eventDetails_participant_item">
+          <img src="logo.png" alt="">
+          <p>usernameusername</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
