@@ -1,0 +1,6 @@
+<% @category.event.each do |event| %>
+  <p><%= event.title %></p>
+  <p><%= event.started_at.to_s(:datetime_jp) %></p>
+  <p><%= event.ended_at.to_s(:datetime_jp) %></p>
+  <p><%= event.description %></p>
+<% end %>
