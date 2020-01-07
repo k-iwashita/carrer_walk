@@ -26,6 +26,11 @@ class User < ApplicationRecord
   end
 
    mount_uploader :image, ImageUploader
+   has_many :user_rooms
+   has_many :rooms, through: :user_rooms
+   has_many :posts
+   has_many :user_groups
+   has_many :groups,through: :user_groups
 
   # イベントに参加する
   def event_join(event)
@@ -40,6 +45,21 @@ class User < ApplicationRecord
     events.include?(event)
   end
 
+
+
+  def groupsJoin(group)
+    groups << group
+
+  end
+
+  def groupsUnjoin(group)
+    user_groups.find_by(group_id: group.id).destroy
+
+  end
+
+  def groupJoining?(group)
+    groups.include?(group)
+  end
 
   private
 

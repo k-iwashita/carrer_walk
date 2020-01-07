@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'groups/new'
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
   }
@@ -15,7 +16,20 @@ Rails.application.routes.draw do
   get 'users/:id/portfolio', to: 'users#portfolio'
 
 
-  resources :events
+  resources :events do
+    patch :toggle_status
+    collection do
+        get 'confirm'
+      end
+  end
   resources :users
   resources :user_events, only: [:create, :destroy]
+
+  #resources :rooms
+
+  resources :groups
+  resources :user_groups,only: [:create, :destroy]
+
+
+  mount ActionCable.server => '/cable'
 end

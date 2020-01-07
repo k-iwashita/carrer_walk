@@ -11,26 +11,31 @@
           <%= @event.title %>
         </h2>
         <% if @event.image %>
-          <div class="thumbnail" style="background-image: url(<%= @event.image %>)"></div>
+          <div class ="thumbnail" style - "background-image:url(<%=@event.image%>)"></div>
         <% elsif @event.site == "doorkeeper" %>
-          <div class="thumbnail">
-            <%= image_tag("doorkeeper.png", style: "margin: 104px auto", width: "360px") %>
-          </div>
+            <div class="thumbnail">
+              <%= image_tag("doorkeeper.png",style: "margin: 104px auto", width: "360px")%>
+            </div>
         <% elsif @event.site == "connpass" %>
-          <div class="thumbnail">
-            <%= image_tag("connpass.png", style: "margin: 71px auto") %>
+          <div class = "thumbnail">
+            <%= image_tag("connpass.png",style: "margin: 71px auto")%>
           </div>
         <% end %>
+
+
       </div>
       <div class="event_detail_wrap">
         <p class="event_detail"><%= icon "fas", "info-circle" %>イベント詳細</p>
         <div class="event_detail_content">
+          <% if @event.adminUser != nil %>
+              <%=link_to "編集", edit_event_path(@event)%>
+              <% end %>
           <% if @event.site %>
             <div class="event_detail_btn">
               <%= link_to "詳細を確認する", @event.url %>
             </div>
-          <% else %>
-            <%= markdown(@event.description).html_safe %>
+
+
           <% end %>
         </div>
       </div>
@@ -55,38 +60,40 @@
         <p class="event_address"><%= @event.address %></p>
         <div id="map"></div>
           <script>
-            handler = Gmaps.build('Google');
-            handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-              markers = handler.addMarkers(<%= raw @hash.to_json %>);
+            handler = Gmaps.build("Google");
+            handler.buildMap({provider: [],internal: {id: 'map'}},function(){
+              markers = handler.addMarkers(<%=raw @hash.to_json %>);
               handler.bounds.extendWith(markers);
               handler.fitMapToBounds();
               handler.getMap().setZoom(17);
             });
           </script>
         </div>
-      <div class="event_date_wrap">
-        <div class="event_date_content">
-          <div class="event_date_status">
-            <% if @event.started_at > Time.now %>
-              <p style="background: #FFCC66;">開催前</p>
-            <% else %>
-              <p style="background: #aaa">終了</p>
-            <% end %>
-          </div>
-          <p class="event_date"><%= l(event_date, format: :long) %></p>
-          <p class="event_started_at"><%= l(@event.started_at, format: :just_time)%></p>
-          <p class="event_ended_at"><span>~</span><%= l(@event.ended_at, format: :just_time) %></p>
+
+    <dic class = "event_date_wrap">
+      <div class = "event_date_content">
+        <div class ="event_date_status">
+          <% if @event.started_at>Time.now%>
+            <p style="background: #FFCC66;">開催前</p>
+          <% else %>
+            <p style = "background: #aaa>"終了</p>
+          <% end %>
         </div>
+
+        <p class ="event_date"><%=l(event_date,format: :long)%></p>
+        <p class = "event_started_at"><%= l(@event.started_at,format: :just_time)%></p>
+        <p class = "event_ended_at"><span></span><%= l(@event.ended_at,formal: :fust_time)%></p>
       </div>
+    </div>
+
       <% if @event.owner %>
       <div class="event_owner_wrap">
 
       </div>
       <% end %>
-      <% if @event.users.any? %>
-      <div class="event_paticipation_wrap">
-
-      </div>
+      <% if @event.users.any?%>
+       <div class="event_paticipation_wrap">
+       </div>
       <% end %>
     </div>
   </div>

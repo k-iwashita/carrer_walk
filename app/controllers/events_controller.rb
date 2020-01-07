@@ -1,10 +1,16 @@
 class EventsController < ApplicationController
    before_action :authenticate_user! ,only: [:new, :create]
 
+   before_action :set_event, only: [:toggle_status]
+
+
   def index
     @q = Event.where('started_at > ?', Date.today).ransack(params[:q])
     @events = @q.result.published.order(:started_at).page(params[:page]).per(20)
+
   end
+
+
 
   def show
     @user = current_user
@@ -18,6 +24,9 @@ class EventsController < ApplicationController
       marker.lng event.lon
       marker.infowindow event.location
     end
+
+
+
   end
 
   def new
@@ -25,23 +34,67 @@ class EventsController < ApplicationController
   end
 
   def create
+    @event = Event.new(status: :"published")
     @event = Event.new(event_params)
+    @event.adminUser = current_user.id
+
     if @event.save
+      flash[:success] ="作成しました"
       redirect_to @event
     else
+      flash[:info] = "作成できませんでした"
       render :new
     end
   end
 
+  def edit
+    @event = Event.find(params[:id])
+  end
 
+  def update
+    @event = Event.find(params[:id])
+    if @event.update_attributes(event_params)
+      flash[:success] = "更新しました"
+      redirect_to @event
+    else
+      render 'edit'
+    end
+  end
 
   def search
     @q = Event.where('started_at > ?', Date.today).ransack(params[:q])
     @events = @q.result.order(:started_at).page(params[:page]).per(20)
+
   end
+
+  def confirm#下書きアクションのメソッド
+    @events = Event.draft.order("created_at DESC")
+  end
+
+  def toggle_status#下書きdraftか、公開publishedを判断するメソッド、eventモデルに書いてあります
+    @event.toggle_status!
+    redirect_to @event, notice: '公開しました'
+  end
+
+
+
+  def destroy
+    @event = Event.find(params[:id])
+    @event.delete
+    redirect_to confirm_events_path
+    flash[:info] = "削除しました"
+
+  end
+
 
   private
     def event_params
-      params.require(:event).permit(:title, :location,:description, :started_at, :ended_at)
+      params.require(:event).permit(:title, :location,:description, :started_at, :ended_at,:status)
     end
+
+    def set_event
+      @event = Event.find(params[:id] || params[:event_id])
+    end
+
+
 end

@@ -61,6 +61,14 @@
           <h3>参加したイベントはありません</h3>
         <% end  %>
       </div>
+
+
+
+  <%= button_to "コミュニティ一覧",groups_path,:method => :get %>
+  <%= button_to "コミュニティを作成する", new_group_path, :method => :get %>
+  <%= button_to "イベント作成", new_event_path, :method => :get  %>
+
+<%= button_to "下書きを見る" ,confirm_events_path,:method => :get%>
     </div>
     <div class="side_content">
       <div class="user_profile">
