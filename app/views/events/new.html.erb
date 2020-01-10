@@ -34,7 +34,7 @@
         <%= form.label 'カテゴリー' %>
         <br>
           <%= form.fields_for :category do |i| %>
-            <%= form.select :category_ids, @categories.each do { }, { include_blank: true, selected: 3 }, { id: "user_id", class: "user_class" } %>
+            <%= form.select :category_ids, @categories, { include_blank: true, selected: 3 }, { id: "user_id", class: "user_class" } %>
           <% end %>
       </div>
       <%= form.submit "作成", class: "btn btn-info"  %>
