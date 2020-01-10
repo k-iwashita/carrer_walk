@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class UserEventsController < ApplicationController
    before_action :authenticate_user! ,only: [:delete, :create]
   def create

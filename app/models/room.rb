@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Room < ApplicationRecord
    validates :name, presence: true
 

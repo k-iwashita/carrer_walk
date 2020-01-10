@@ -2,12 +2,13 @@
         <!-- ここから使用 -->
         <div class="community_container">
           <div class="community_headerImage_wrapper">
-            <img class="community_headerImage" src="forest.jpg" alt="header image">
+            <div class="community_headerImage" >
+              </div>
           </div>
 
           <div class="community_profile_wrapper">
             <div class="community_profile">
-              <img class="community_profile_image" src="blueSmoke.jpg" alt="">
+              <img class="community_profile_image" src=<%= @group.image%> alt="">
               <div class="community_profile_text">
                 <h1><%= @group.name %></h1>
                 <div class="community_profile_tags">
@@ -182,7 +183,6 @@
 
             <div class="community_main_right">
               <div class="community_main_right_inner">
-                <button class="community_main_enterButton" type="button" name="button" >
                   <% if current_user.groupJoining?(@group)%>
                   <div><%= form_for(current_user.user_groups.find_by(group_id: @group.id),
                    html: { method: :delete }) do |f| %></div>
@@ -195,7 +195,7 @@
                       <%=f.submit "参加する", class: "community_main_enterButton" %>
                     <% end %>
                   <% end %>
-                 </button>
+
 
                 <% if @group.owner !=nil %>
                 <%=button_to "コミュニティを編集する",edit_group_path,:method => :get %>
@@ -206,48 +206,18 @@
                 <div class="community_members">
                   <h3>メンバー</h3>
 
-                  <%= @users.count %>
 
                   <div class="community_members_images">
                     <div class="community_members_images_line">
-                      <a href="#">
-                        <img src="logo.png" alt="">
-                      </a>
-                      <a href="#">
-                        <img src="logo.png" alt="">
-                      </a>
-                      <a href="#">
-                        <img src="logo.png" alt="">
-                      </a>
-                      <a href="#">
-                        <img src="logo.png" alt="">
-                      </a>
-                      <a href="#">
-                        <img src="logo.png" alt="">
-                      </a>
-                      <a href="#">
-                        <img src="logo.png" alt="">
-                      </a>
+                      <% @users.each do |user|%>
+                        <a href="">
+                         <img src=<%=user.image%>>
+                        </a>
+                        <% end %>
+
                     </div>
                     <div class="community_members_images_line">
-                      <a href="#">
-                        <img src="logo.png" alt="">
-                      </a>
-                      <a href="#">
-                        <img src="logo.png" alt="">
-                      </a>
-                      <a href="#">
-                        <img src="logo.png" alt="">
-                      </a>
-                      <a href="#">
-                        <img src="logo.png" alt="">
-                      </a>
-                      <a href="#">
-                        <img src="logo.png" alt="">
-                      </a>
-                      <a href="#">
-                        <img src="logo.png" alt="">
-                      </a>
+
                     </div>
                   </div>
                 </div>

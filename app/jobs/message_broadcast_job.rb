@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class MessageBroadcastJob < ApplicationJob
   #入力とブロードキャストされたものはアラートされるだけで、保存がされない。
   #speakアクションを書き換えて、ブロードキャスト処理は非同期通信のためにjobに移動する

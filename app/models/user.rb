@@ -1,9 +1,10 @@
+# -*- encoding : utf-8 -*-
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable
-
+         :recoverable, :rememberable, :validatable, :omniauthable,
+         :omniauth_providers => [:google_oauth2,:twitter]
   validates :name, presence: true
   validates :email, presence: true
 
@@ -21,9 +22,12 @@ class User < ApplicationRecord
       user.email = User.dummy_email(auth)
       user.password = Devise.friendly_token[0,20]
       user.image = auth.info.image.gsub("_normal","") if user.provider == "twitter"
+      user.image = auth.info.image.gsub("_normal","") if user.provider =="google_oauth2"
       user.name =  auth.info.name
       end
   end
+
+
 
    mount_uploader :image, ImageUploader
    has_many :user_rooms

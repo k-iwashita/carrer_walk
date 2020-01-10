@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class GroupsController < ApplicationController
   def index
     @groups = Group.all
@@ -7,7 +8,7 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @users = @group.users
-  
+
   end
 
 
@@ -51,7 +52,7 @@ class GroupsController < ApplicationController
 
   private
   def group_params
-    params.require(:group).permit(:name,:description)
+    params.require(:group).permit(:name,:description,:image)
   end
 
 end

@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module SelectDateHelpers
   def select_date(date, options = {})
     field = options[:from]
