@@ -26,8 +26,13 @@ class EventsController < ApplicationController
   end
 
   def create
+    @categories = Category.all
     @event = Event.new(event_params)
+    categories = Category.where(params[:category_ids])
     if @event.save
+      categories.each do |c|
+        @event.add_category(c)
+      end
       redirect_to @event
     else
       render :new

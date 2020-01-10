@@ -18,15 +18,24 @@
       </div>
       <div class="form-group">
         <%= form.label :started_at %>
+        <br>
         <%= form.datetime_select :started_at, {} %>
       </div>
       <div class="form-group">
         <%= form.label :ended_at %>
+        <br>
         <%= form.datetime_select :ended_at, {} %>
       </div>
       <div class="form-group">
         <%= form.label :description %>
         <%= form.text_area :description, placeholder: "詳細", class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= form.label 'カテゴリー' %>
+        <br>
+          <%= form.fields_for :category do |i| %>
+            <%= form.select :category_ids, @categories.each do { }, { include_blank: true, selected: 3 }, { id: "user_id", class: "user_class" } %>
+          <% end %>
       </div>
       <%= form.submit "作成", class: "btn btn-info"  %>
     <% end %>
