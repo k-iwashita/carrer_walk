@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @events = Event.where(id: @user.events)
-    @id = @user.id
+    @groups = Group.where(id: @user.groups)
   end
 
   def portfolio

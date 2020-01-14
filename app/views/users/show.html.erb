@@ -50,17 +50,12 @@
           <h2>参加コミュニティ</h2>
           <ul>
             <li>
+              <% @groups.each do |group| %>
               <img src="logo.png" alt="">
-              <a href="#"><p>Ruby@Osaka</p></a>
+              <a href="#"><p><%=group.name %></p></a>
             </li>
-            <li>
-              <img src="logo.png" alt="">
-              <a href="#"><p>Ruby@Osaka</p></a>
-            </li>
-            <li>
-              <img src="logo.png" alt="">
-              <a href="#"><p>Ruby@Osaka</p></a>
-            </li>
+          
+            <% end %>
           </ul>
         </div>
         <%= button_to "コミュニティ一覧",groups_path,:method => :get %>

@@ -28,6 +28,9 @@
         <%= link_to "#{event.title}",event_path(event), class: "event_title" %>
         <div class="event_site">
         </div>
+        <div class ="event_detail_path">
+          <%=link_to "詳細" ,event_path, :style=>"color:white;"%>
+        </div>
         <div class="event_time">
           <%= l(event.started_at, format: :just_time) %><span>~</span>
         </div>

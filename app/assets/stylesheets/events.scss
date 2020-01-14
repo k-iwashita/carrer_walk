@@ -16,6 +16,8 @@
   }
 }
 
+
+
 .main_content {
   width: 70%;
 }
@@ -89,7 +91,15 @@
   background: #2680EB;
   color: white;
 }
-
+.event_detail_path{
+  position: absolute;
+  right: 0;
+  top: 40px;
+  padding: 5px 19.5px;
+  border-radius: 4px;
+  background: #2680EB;
+  color: white;
+}
 .event_title:hover {
   text-decoration: none;
   color: #212529;
