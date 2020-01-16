@@ -18,6 +18,7 @@
 /* ここまでMaterial Icons */
 .community_container {
   width: 100vw;
+
 }
 
 .community_container .community_headerImage_wrapper {
@@ -33,14 +34,18 @@
 .community_headerImage_wrapper {
   position: relative;
   overflow: hidden;
+
 }
 
 .community_headerImage_wrapper .community_headerImage {
   width: 100vw;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+
+  height: 200px;
+
+  background-image: url("bonbon.jpg");
+  background-size:cover;
+
+
 }
 
 .community_profile_wrapper .community_profile {
@@ -52,6 +57,8 @@
 
 .community_profile_wrapper .community_profile img {
   float: left;
+  width:320px;
+  height: 220px;
 }
 
 .community_profile_wrapper .community_profile_text {
@@ -214,7 +221,7 @@
 }
 
 .community_main_right_inner {
-  width: 23vw;
+  width: 33vw;
   padding: 0 0 20px;
   margin-left: 1vw;
   background-color: #F5F5F5;
@@ -230,6 +237,9 @@
   background-color: #5bc4f2;
   color: #FFFFFF;
   font-size: 28px;
+  position: relative;
+  right: 22px;
+
 }
 
 .community_main_enterButton:hover {
@@ -376,7 +386,7 @@ community_container {
     font-size: 18px;
   }
   .community_description_text {
-    width: 55vw;
+    width: 30vw;
     background-color: #FFFFFF;
     p {
       padding: 13px;
@@ -642,103 +652,94 @@ community_container {
     }
   }
 }
+
+
 .communityEdit_container {
   width: 100vw;
-}
-
-.communityEdit_container .communityEdit_headerImage_wrapper {
-  width: 100vw;
-  height: 170px;
-}
-
-.communityEdit_container .communityEdit_profile_wrapper {
-  width: 100vw;
-  height: 220px;
+  .communityEdit_headerImage_wrapper {
+    width: 100vw;
+    height: 170px;
+  }
+  .communityEdit_profile_wrapper {
+    width: 100vw;
+    height: 220px;
+  }
 }
 
 .communityEdit_headerImage_wrapper {
   position: relative;
   overflow: hidden;
+  .communityEdit_headerImage {
+    width: 100vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
-.communityEdit_headerImage_wrapper .communityEdit_headerImage {
-  width: 100vw;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.communityEdit_profile_wrapper .communityEdit_profile {
-  height: 300px;
-  width: 80%;
-  margin-left: 50%;
-  transform: translateX(-50%) translateY(-70px);
-  position: relative;
-}
-
-.communityEdit_profile_wrapper .communityEdit_profile img {
-  float: left;
-}
-
-.communityEdit_profile_wrapper .communityEdit_profile .communityEdit_profile_text {
-  float: left;
-  width: 30vw;
-  margin-left: 15px;
-  overflow-x: hidden;
-}
-
-.communityEdit_profile_wrapper .communityEdit_profile .communityEdit_profile_text h1 {
-  margin: 80px 0 5px 0;
-  font-size: 32px;
-}
-
-.communityEdit_profile_wrapper .communityEdit_profile .communityEdit_profile_text .communityEdit_profile_tags {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.communityEdit_profile_wrapper .communityEdit_profile .communityEdit_profile_text .communityEdit_profile_tags a {
-  margin-right: 3px;
-  color: #000000;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-.communityEdit_profile_wrapper .communityEdit_profile .communityEdit_profile_text .communityEdit_profile_tags a .material-icons {
-  font-size: 16px;
-  transform: translateY(2px);
-}
-
-.communityEdit_profile_wrapper .communityEdit_profile .communityEdit_profile_text .communityEdit_profile_tags a button {
-  background-color: rgba(0, 0, 0, 0);
-  border: none;
-  cursor: pointer;
-}
-
-.communityEdit_profile_wrapper .communityEdit_profile .communityEdit_profileEditButton {
-  width: 160px;
-  height: 32px;
-  border: 0;
-  border-radius: 10px;
-  position: absolute;
-  top: 130px;
-  right: 150px;
-  color: #FFFFFF;
-  background-color: #5BC4F2;
-  font-size: 14px;
-}
-
-.communityEdit_profile_wrapper .communityEdit_profile .communityEdit_profileEditButton:hover {
-  transition: 0.3s;
-  background-color: #7CCEF2;
-}
-
-.communityEdit_profile_wrapper .communityEdit_profile input {
-  position: absolute;
-  top: 135px;
-  right: -40px;
-  font-size: 14px;
+.communityEdit_profile_wrapper {
+  .communityEdit_profile {
+    height: 300px;
+    width: 80%;
+    margin-left: 50%;
+    transform: translateX(-50%) translateY(-70px);
+    position: relative;
+    img {
+      float: left;
+    }
+    .communityEdit_profile_text {
+      float: left;
+      width: 30vw;
+      margin-left: 15px;
+      overflow-x: hidden;
+      h1 {
+        margin: 80px 0 5px 0;
+        font-size: 32px;
+      }
+      .communityEdit_profile_tags {
+        display: flex;
+        flex-wrap: wrap;
+        a {
+          margin-right: 3px;
+          color: #000000;
+          text-decoration: none;
+          font-size: 14px;
+          .material-icons {
+            font-size: 16px;
+            transform: translateY(2px);
+          }
+          button {
+            background-color: rgba(0,0,0,0);
+            border: none;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    .communityEdit_profileEditButton {
+      width: 160px;
+      height: 32px;
+      border: 0;
+      border-radius: 10px;
+      position: absolute;
+      top: 130px;
+      right: 150px;
+      color: #FFFFFF;
+      background-color: #5BC4F2;
+      font-size: 14px;
+      &:hover {
+        transition: 0.3s;
+        background-color: #7CCEF2;
+      }
+    }
+    input {
+      position: absolute;
+      top: 135px;
+      right: -40px;
+      font-size: 14px;
+    }
+  }
 }
 
 .communityEdit_description {
@@ -747,98 +748,83 @@ community_container {
   margin: auto 8vw 40px 8vw;
   position: relative;
   background-color: #F5F5F5;
-}
-
-.communityEdit_description h2 {
-  padding-top: 5px;
-  margin: 20px auto 4px 40px;
-  font-size: 18px;
-}
-
-
-.communityEdit_description {
-  .form-group{
+  h2 {
+    padding-top: 5px;
+    margin: 20px auto 4px 40px ;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .form-control {
     width: 76vw;
     height: 240px;
     margin-left: 4vw;
     resize: none;
     font-size: 14px;
   }
-}
-
-
-.communityEdit_description button {
-  width: 148px;
-  height: 43px;
-  border: none;
-  border-radius: 10px;
-  position: absolute;
-  bottom: 20px;
-  right: 5vw;
-  background-color: #5BC4F2;
-  color: #FFFFFF;
-  font-size: 18px;
-}
-
-.communityEdit_description button:hover {
-  transition: 0.3s;
-  background-color: #7CCEF2;
+  button {
+    width: 148px;
+    height: 43px;
+    border: none;
+    border-radius: 10px;
+    position: absolute;
+    bottom :20px;
+    right: 5vw;
+    background-color: #5BC4F2;
+    color: #FFFFFF;
+    font-size: 18px;
+    &:hover {
+      transition: 0.3s;
+      background-color: #7CCEF2;
+    }
+  }
 }
 
 .communityEdit_links {
   width: 84vw;
   margin: auto 8vw 120px 8vw;
+  // position: relative;
   background-color: #F5F5F5;
+  h2 {
+    padding-top: 5px;
+    margin: auto auto 0 40px;
+    font-size: 18px;
+  }
+  ul {
+    padding: 0;
+    list-style: none;
+    text-align: left;
+    li {
+      display: flex;
+      p {
+        width: 6vw;
+        margin-left: 40px;
+        font-size: 14px;
+      }
+      input {
+        width: 66vw;
+        height: 16px;
+        float: right;
+        margin: 16px auto auto 30px;
+        font-size: 14px;
+        transform: translateY(-3.5px);
+      }
+    }
+  }
+  button {
+    width: 148px;
+    height: 43px;
+    margin: auto auto 20px 69vw;
+    border: none;
+    border-radius: 10px;
+    background-color: #5BC4F2;
+    color: #FFFFFF;
+    font-size: 18px;
+    &:hover {
+      transition: 0.3s;
+      background-color: #7CCEF2;
+    }
+  }
 }
-
-.communityEdit_links h2 {
-  padding-top: 5px;
-  margin: auto auto 0 40px;
-  font-size: 18px;
-}
-
-.communityEdit_links ul {
-  padding: 0;
-  list-style: none;
-  text-align: left;
-}
-
-.communityEdit_links ul li {
-  display: flex;
-}
-
-.communityEdit_links ul li p {
-  width: 6vw;
-  margin-left: 40px;
-  font-size: 14px;
-}
-
-.communityEdit_links ul li input {
-  width: 66vw;
-  height: 16px;
-  float: right;
-  margin: 16px auto auto 30px;
-  font-size: 14px;
-  transform: translateY(-3.5px);
-}
-
-.communityEdit_links button {
-  width: 148px;
-  height: 43px;
-  margin: auto auto 20px 69vw;
-  border: none;
-  border-radius: 10px;
-  background-color: #5BC4F2;
-  color: #FFFFFF;
-  font-size: 18px;
-}
-
-
-.communityEdit_links button:hover {
-  transition: 0.3s;
-  background-color: #7CCEF2;
-}
-
 
 
 

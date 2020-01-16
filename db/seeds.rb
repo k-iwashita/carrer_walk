@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 #ユーザー
 30.times do |n|
   name  = "User#{n+1}"

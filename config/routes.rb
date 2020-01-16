@@ -1,8 +1,11 @@
+# -*- encoding : utf-8 -*-
 Rails.application.routes.draw do
+
   get 'groups/new'
   devise_for :users, controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks',
   }
+
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
     get 'profile_edit', to: 'users/registrations#profile_edit', as: 'profile_edit'
@@ -11,10 +14,11 @@ Rails.application.routes.draw do
 
   root 'events#index'
 
+
   get 'search', to: 'events#search'
 
   get 'users/:id/portfolio', to: 'users#portfolio'
-
+  get 'users/:id/joiningEvent', to: 'users#joiningEvent',as: "user_joiningEvent"
 
   resources :events do
     patch :toggle_status

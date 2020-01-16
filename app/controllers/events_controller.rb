@@ -1,4 +1,6 @@
+# -*- encoding : utf-8 -*-
 class EventsController < ApplicationController
+
    before_action :authenticate_user! ,only: [:new, :create]
 
    before_action :set_event, only: [:toggle_status]
@@ -6,6 +8,7 @@ class EventsController < ApplicationController
 
   def index
     @q = Event.where('started_at > ?', Date.today).ransack(params[:q])
+
     @events = @q.result.published.order(:started_at).page(params[:page]).per(20)
 
   end
@@ -15,17 +18,19 @@ class EventsController < ApplicationController
   def show
     @user = current_user
     @event = Event.find(params[:id])
+    @users = @event.users
     @participants = User.where(id: @event.users)
     @user_event = UserEvent.find_by(event_id: @event.id, user_id: current_user.id) if current_user
-    @participants = User.where(id: @event.users)
+    @participants = User.where(id: @users.name)
+    @address = @event.address
+
+
 
     @hash = Gmaps4rails.build_markers(@event) do |event, marker|
       marker.lat event.lat
       marker.lng event.lon
-      marker.infowindow event.location
+      marker.infowindow event.address
     end
-
-
 
   end
 
@@ -89,7 +94,7 @@ class EventsController < ApplicationController
 
   private
     def event_params
-      params.require(:event).permit(:title, :location,:description, :started_at, :ended_at,:status)
+      params.require(:event).permit(:title, :location,:address,:lat,:lon,:description, :started_at, :ended_at,:status)
     end
 
     def set_event

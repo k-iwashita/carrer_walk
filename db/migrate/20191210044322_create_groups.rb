@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateGroups < ActiveRecord::Migration[5.2]
   def change
     create_table :groups do |t|

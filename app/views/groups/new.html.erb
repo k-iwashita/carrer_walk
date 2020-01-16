@@ -14,6 +14,11 @@
         <%= form.text_area :description, placeholder: "詳細", class: "form-control" %>
       </div>
 
+      <div class="field">
+        <%= form.label :イメージ画像 %><br/>
+        <%= form.file_field :image %>
+      </div>
+
       <%= form.submit "コミュニティを作成する", class: "btn btn-info" %>
     <% end %>
 
