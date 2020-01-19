@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class UserEventsController < ApplicationController
    before_action :authenticate_user! ,only: [:delete, :create]
   def create
@@ -7,6 +8,7 @@ class UserEventsController < ApplicationController
     UserEventMailer.creation_email(user, @event).deliver_now
     redirect_to event_path(@event)
   end
+
 
   def destroy
     user = current_user

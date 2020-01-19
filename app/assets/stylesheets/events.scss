@@ -10,10 +10,13 @@
 
 .event_wrapper {
   margin-bottom: 100px;
+  margin-top: 50px;
   .container {
     display: flex;
   }
 }
+
+
 
 .main_content {
   width: 70%;
@@ -88,7 +91,15 @@
   background: #2680EB;
   color: white;
 }
-
+.event_detail_path{
+  position: absolute;
+  right: 0;
+  top: 40px;
+  padding: 5px 19.5px;
+  border-radius: 4px;
+  background: #2680EB;
+  color: white;
+}
 .event_title:hover {
   text-decoration: none;
   color: #212529;
@@ -181,27 +192,6 @@
   }
 }
 
-.event_location_wrap {
-  background: #f5f5f5;
-  padding: 10px;
-  border-radius: 4px;
-  margin-bottom: 20px;
-  h3 {
-    text-align: center;
-  }
-  .event_location {
-    font-weight: bold;
-    padding-bottom: 5px;
-  }
-  .event_address {
-    font-size: 12px;
-  }
-
-  #map {
-    height: 300px;
-    margin: 20px auto 0 auto;
-  }
-}
 
 
 .event_date_wrap {
@@ -302,8 +292,8 @@ body {
     font-size: 24px;
   }
   img {
-    width: 50vw;
-    height: 300px;
+    width: 35vw;
+    height: 130px;
     margin: 20px auto auto 5vw;
   }
 }
@@ -402,6 +392,13 @@ body {
     background-color: #FFFFFF;
     overflow: hidden;
   }
+  // #map {
+  //   width: 21vw;
+  //   height: 260px;
+  //   margin-left: 1vw;
+  //   background-color: #FFFFFF;
+  //   overflow: hidden;
+  // }
 }
 
 .eventDetails_application {
@@ -497,23 +494,4 @@ body {
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'liga';
-}
-
-/* ここまでMaterial Icons */
-
-body {
-  margin: 0;
-  overflow-x: hidden;
-}
-
-header {
-  width: 100vw;
-  height: 88px;
-  background-color: #2680EB;
-}
-
-footer {
-  width: 100vw;
-  height: 128px;
-  background-color: #2680EB;
 }

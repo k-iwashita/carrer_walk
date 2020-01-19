@@ -21,8 +21,26 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "events";
 
 p {
   padding: 0;
   margin: 0;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+header {
+  width: 100vw;
+  height: 88px;
+  background-color: #2680EB;
+}
+
+footer {
+  width: 100vw;
+  height: 128px;
+  background-color: #2680EB;
 }

@@ -216,6 +216,10 @@ GEM
       rack (>= 1.6.2, < 3)
     omniauth-facebook (5.0.0)
       omniauth-oauth2 (~> 1.2)
+    omniauth-google-oauth2 (0.8.0)
+      jwt (>= 2.0)
+      omniauth (>= 1.1.1)
+      omniauth-oauth2 (>= 1.6)
     omniauth-oauth (1.1.0)
       oauth
       omniauth (~> 1.0)
@@ -240,7 +244,7 @@ GEM
       pry (>= 0.10.4)
     public_suffix (4.0.1)
     puma (3.12.1)
-    rack (2.0.7)
+    rack (2.0.8)
     rack-protection (2.0.7)
       rack
     rack-test (1.1.0)
@@ -419,6 +423,7 @@ DEPENDENCIES
   momentjs-rails
   omniauth
   omniauth-facebook
+  omniauth-google-oauth2
   omniauth-twitter
   pg (>= 0.18, < 2.0)
   pry-byebug

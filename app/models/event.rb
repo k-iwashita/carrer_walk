@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Event < ApplicationRecord
  validates :title, presence: true
  validates :started_at, presence: true
@@ -12,6 +13,21 @@ class Event < ApplicationRecord
  has_many :upload_files, dependent: :destroy
 
  enum status: { draft: 0, published: 1 }
+ validates :status, inclusion: { in: Event.statuses.keys }
+
+ Geocoder.configure(language: :ja)
+ geocoded_by :address,latitude: :lat, longitude: :lon
+ after_validation :geocode, if: :address_changed?
+
+
+ def toggle_status!
+     if draft?
+       published!
+     else
+       draft!
+     end
+   end
+
 
  # geocoded_by :address
  # after_validation :geocode

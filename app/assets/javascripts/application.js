@@ -30,6 +30,7 @@
 //= require fullcalendar/lang/ja
 //= require select2
 
+
 $(document).ready(function(){
   $('#calendar').fullCalendar({
   });
@@ -47,3 +48,7 @@ $(document).ready(function() {
     allowClear: true
   });
 });
+
+$(function(){
+  setTimeout("$('.alert').fadeOut('slow')", 1000)
+})
