@@ -28,7 +28,7 @@ class EventsController < ApplicationController
   def create
     @categories = Category.all
     @event = Event.new(event_params)
-    categories = Category.where(params[:category_ids])
+    categories = Category.where(event_category_name_params)
     if @event.save
       categories.each do |c|
         @event.add_category(c)
@@ -48,6 +48,11 @@ class EventsController < ApplicationController
 
   private
     def event_params
-      params.require(:event).permit(:title, :location,:description, :started_at, :ended_at)
+      params.require(:event).permit(:title, :location,:description, :started_at, :ended_at, :name)
+    end
+
+    def event_category_name_params
+      # params.require(:event).permit(:category)
+      params.require(:category).permit(:name)
     end
 end

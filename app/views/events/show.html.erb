@@ -35,6 +35,17 @@
       </div>
     </div>
 
+    <% if @event.categories %>
+      <table class="table table-bordered">
+        <tr>
+          <% @event.categories.each do |category| %>
+            <td><%= link_to category.name, category_path(category.name) %></td>
+          <% end %>
+        </tr>
+      </table>
+    <% end %>
+
+
     <div class="eventDetails_document">
       <h2>イベント資料</h2>
       <div class="eventDetails_links">

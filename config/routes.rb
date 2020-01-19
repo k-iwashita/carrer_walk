@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   resources :users
   resources :user_events, only: [:create, :destroy]
   resources :event_category, only: [:create, :destroy]
-  get 'category/:name', to: 'category#show'
+  get 'category/:name', to: 'category#show', as: 'category'
+  get 'categories', to: 'category#index', as: 'categories'
 end

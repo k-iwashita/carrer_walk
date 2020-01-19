@@ -31,10 +31,10 @@
         <%= form.text_area :description, placeholder: "詳細", class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= form.label 'カテゴリー' %>
-        <br>
-          <%= form.fields_for :category do |i| %>
-            <%= form.select :category_ids, @categories, { include_blank: true, selected: 3 }, { id: "user_id", class: "user_class" } %>
+          <%= form.fields_for :category do |c| %>
+            <%= c.label 'カテゴリー', :category %>
+            <br>
+            <%= select :category, :name, Category.all.map { |category| category.name }, {include_blank: '選択して下さい', class: 'mySelect2',  multiple: true } %>
           <% end %>
       </div>
       <%= form.submit "作成", class: "btn btn-info"  %>

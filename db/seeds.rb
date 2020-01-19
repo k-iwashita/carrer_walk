@@ -24,10 +24,10 @@ end
 
 #カテゴリー
 Category.create([
-    { name: 'Ruby' },
-    { name: 'Ruby on Rails4' },
-    { name: 'Ruby on Rails5' },
-    { name: 'Python2' },
-    { name: 'Python3' },
-    { name: 'Django2' }
+    { name: 'ruby' },
+    { name: 'ruby_on_rails4' },
+    { name: 'ruby_on_Rails5' },
+    { name: 'python2' },
+    { name: 'python3' },
+    { name: 'django2' }
   ])
