@@ -22,5 +22,10 @@ RSpec.describe Group, type: :model do
     expect(group.errors[:description]).to include('を入力してください')
   end
 
-  
+  it 'imageのないgroupは無効になること'do
+    group.image = nil
+    group.valid?
+    expect(group.errors[:image]).to include('を入力してください')
+  end
+
 end
