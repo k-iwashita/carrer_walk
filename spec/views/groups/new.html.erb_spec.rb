@@ -8,13 +8,13 @@ RSpec.describe Group, type: :model do
     expect(FactoryBot.create(:group)).to be_valid
   end
 
-  it "nameのないeventは無効になること" do
+  it "nameのないgroupは無効になること" do
     group.name = nil
     group.valid?
     expect(group.errors[:name]).to include("を入力してください")
   end
 
-  it "descriptionのないeventは無効になること" do
+  it "descriptionのないgroupは無効になること" do
     group.description= nil
     group.valid?
     expect(group.errors[:description]).to include("を入力してください")
