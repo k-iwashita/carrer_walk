@@ -4,7 +4,8 @@ FactoryBot.define do
 
     name{"test_user" }
     description{"test"}
-  
+    image{Rack::Test::UploadedFile.new(File.join(Rails.root, 'app/assets/images/umi.jpeg'))}
+
 
 
 

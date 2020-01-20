@@ -1,4 +1,4 @@
-# -*- encoding : utf-8 -*-
+
 require 'rails_helper'
 
 describe 'コミュニティ参加機能', type: :system do
