@@ -16,6 +16,7 @@ describe 'カテゴリー機能', type: :system do
     visit new_event_path
     fill_in 'タイトル', with: 'キャリアウォークインターン'
     fill_in 'イベント開催地', with: 'Gudeオフィス'
+    select "公開する", from: 'event[status]'
     select "ruby", from: 'category[name]'
     click_button '作成'
   end

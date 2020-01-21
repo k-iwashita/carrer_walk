@@ -1,7 +1,7 @@
 # -*- encoding : utf-8 -*-
 require 'rails_helper'
 
-RSpec.describe UserGroup, type: :model do
+RSpec.describe User, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
 
 
