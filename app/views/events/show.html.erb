@@ -61,11 +61,18 @@
 
   <div class="eventDetails_right">
     <div class="eventDetails_location">
-      <h3>会場</h3>
-      <h3><%= @event.location %></h3>
-      <p>大阪府大阪市北区大深町3</p>
-      <div class="eventDetails_location_map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6559.888663968141!2d135.494366!3d34.706584!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xffe76e4703a925f3!2sGVH%20Osaka!5e0!3m2!1sja!2sjp!4v1576412630907!5m2!1sja!2sjp" width="280" height="280" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+      <h3><%= icon "fas", "map-marker-alt", class: "mr-2" %>会場</h3>
+      <p class="event_location"><%= @event.location %></p>
+      <div id="map">
+        <script>
+          handler = Gmaps.build("Google");
+          handler.buildMap({provider: {},internal: {id: 'map'}},function(){
+            markers = handler.addMarkers(<%=raw @hash.to_json %>);
+            handler.bounds.extendWith(markers);
+            handler.fitMapToBounds();
+            handler.getMap().setZoom(17);
+          });
+        </script>
       </div>
     </div>
 
@@ -99,11 +106,14 @@
         <%  @event.users.each do |user| %>
           <div class="eventDetails_participant_itemWrapper">
             <div class="eventDetails_participant_item">
-              <img src="logo.png" alt="">
+              <img src=<%=user.image%> alt="">
               <p><%= user.name %></p>
             </div>
           </div>
         <% end %>
       <% end %>
     </div>
+
   </div>
+
+</div>
